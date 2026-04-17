@@ -2,37 +2,63 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лера и Кирилл | Приглашение</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Лера & Кирилл | Свадебное приглашение</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5efe7;
-            padding: 20px;
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #fef9e8 0%, #f1ebdf 100%);
             color: #2c3e2f;
+            padding: 20px;
         }
+
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
         }
+
+        /* Карточки с тенью и скруглением */
         .card {
-            background: white;
-            border-radius: 40px;
-            padding: 30px 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(2px);
+            border-radius: 48px;
+            padding: 32px 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+            border: 1px solid rgba(226, 199, 162, 0.4);
         }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        h1 {
+            font-size: 52px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #4a6741, #7c9a6e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+        }
+
         h2 {
-            color: #5a7c5a;
-            border-left: 5px solid #e2c7a2;
-            padding-left: 15px;
-            margin-bottom: 20px;
+            color: #4a6741;
+            font-size: 28px;
+            border-left: 6px solid #e2c7a2;
+            padding-left: 18px;
+            margin-bottom: 24px;
+            font-weight: 600;
         }
+
+        /* Таймер — яркий и сочный */
         .timer {
             display: flex;
             justify-content: center;
@@ -40,73 +66,166 @@
             flex-wrap: wrap;
             text-align: center;
         }
+
         .timer-block {
-            background: #f0ebe2;
-            border-radius: 20px;
-            padding: 15px 20px;
-            min-width: 80px;
+            background: #ffffffcc;
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 20px 18px;
+            min-width: 90px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            border: 1px solid #e2c7a2;
         }
+
         .timer-number {
-            font-size: 32px;
-            font-weight: bold;
+            font-size: 44px;
+            font-weight: 800;
             color: #5a7c5a;
+            line-height: 1;
         }
+
+        /* Фотографии — сетка 2х2 с эффектом */
         .photo-grid {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             flex-wrap: wrap;
             justify-content: center;
         }
+
         .photo-grid img {
             width: 200px;
             height: 200px;
             object-fit: cover;
-            border-radius: 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 32px;
+            box-shadow: 0 12px 22px -10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            border: 3px solid white;
         }
+
+        .photo-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Кнопка маршрута */
         .map-btn {
             display: inline-block;
             background: #5a7c5a;
             color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
+            padding: 14px 32px;
+            border-radius: 60px;
             text-decoration: none;
-            margin-top: 15px;
+            font-weight: 600;
+            margin-top: 16px;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
+
+        .map-btn:hover {
+            background: #3e5a3e;
+            transform: scale(1.02);
+        }
+
+        /* Форма пожеланий */
         .wish-input, .wish-textarea {
             width: 100%;
             margin: 8px 0;
-            padding: 10px;
-            border-radius: 30px;
-            border: 1px solid #ddd;
+            padding: 14px 18px;
+            border-radius: 60px;
+            border: 1px solid #e2c7a2;
+            background: #fffcf7;
+            font-size: 16px;
         }
+
+        .wish-textarea {
+            border-radius: 28px;
+        }
+
+        .wish-btn {
+            background: #e2c7a2;
+            color: #2c3e2f;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: 0.2s;
+        }
+
+        .wish-btn:hover {
+            background: #d4b68a;
+        }
+
         .wish-item {
-            background: #f9f5ef;
-            padding: 12px;
-            border-radius: 24px;
-            margin-bottom: 12px;
+            background: #fff6ea;
+            padding: 16px;
+            border-radius: 32px;
+            margin-bottom: 14px;
+            border-left: 6px solid #e2c7a2;
         }
+
+        /* Музыкальная кнопка */
+        .music-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: white;
+            border-radius: 60px;
+            padding: 12px 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            border: 1px solid #e2c7a2;
+            backdrop-filter: blur(8px);
+            font-weight: 500;
+        }
+
+        .music-btn button {
+            background: #5a7c5a;
+            border: none;
+            color: white;
+            font-size: 24px;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         footer {
             text-align: center;
-            margin-top: 30px;
+            padding: 28px;
             color: #8b9a6e;
+            font-weight: 500;
         }
+
         @media (max-width: 600px) {
-            .timer-number { font-size: 24px; }
+            .container { padding: 0; }
+            h1 { font-size: 38px; }
+            .timer-number { font-size: 28px; }
             .photo-grid img { width: 140px; height: 140px; }
+            .music-btn { padding: 8px 16px; bottom: 16px; right: 16px; }
         }
     </style>
 </head>
 <body>
+
 <div class="container">
+    <!-- Заголовок -->
     <div class="card" style="text-align: center;">
-        <h1 style="color:#4a6741;">Лера & Кирилл</h1>
-        <p>Приглашаем вас разделить с нами этот день</p>
-        <p><strong>17 июля 2026</strong></p>
+        <h1>Лера & Кирилл</h1>
+        <p style="font-size: 20px; color: #7c9a6e;">Приглашаем вас в наш светлый день</p>
+        <p style="margin-top: 12px; background: #e2c7a260; display: inline-block; padding: 8px 28px; border-radius: 60px; font-weight: 500;">17 июля 2026</p>
     </div>
 
+    <!-- Таймер -->
     <div class="card">
-        <h2>⏳ До свадьбы осталось</h2>
+        <h2>⏳ День встречи близко</h2>
         <div class="timer" id="timer">
             <div class="timer-block"><div class="timer-number" id="days">00</div><div>дней</div></div>
             <div class="timer-block"><div class="timer-number" id="hours">00</div><div>часов</div></div>
@@ -115,60 +234,82 @@
         </div>
     </div>
 
+    <!-- Детские фото -->
     <div class="card">
-        <h2>🌼 Детские фото</h2>
+        <h2>🌼 Маленькие мы</h2>
         <div class="photo-grid">
-            <img src="https://placehold.co/400x400/e2c7a2/ffffff?text=Лера+в+детстве" alt="Лера">
-            <img src="https://placehold.co/400x400/d9e3d4/ffffff?text=Кирилл+в+детстве" alt="Кирилл">
+            <img src="https://placehold.co/500x500/e2c7a2/ffffff?text=Лера+в+детстве" alt="Лера">
+            <img src="https://placehold.co/500x500/d9e3d4/ffffff?text=Кирилл+в+детстве" alt="Кирилл">
         </div>
     </div>
 
+    <!-- Взрослые фото -->
     <div class="card">
-        <h2>💑 Мы вместе</h2>
+        <h2>💑 А теперь мы — одно целое</h2>
         <div class="photo-grid">
-            <img src="https://placehold.co/400x400/c8dcc0/ffffff?text=Наша+встреча" alt="Встреча">
-            <img src="https://placehold.co/400x400/b8cfad/ffffff?text=Счастливы+вместе" alt="Счастливы">
+            <img src="https://placehold.co/500x500/c8dcc0/ffffff?text=Наша+история" alt="История">
+            <img src="https://placehold.co/500x500/b8cfad/ffffff?text=Счастье+рядом" alt="Счастье">
         </div>
     </div>
 
+    <!-- Программа -->
     <div class="card">
         <h2>🍃 Программа дня</h2>
-        <p><strong>13:00</strong> — Сбор гостей</p>
-        <p><strong>14:00</strong> — Венчание</p>
-        <p><strong>15:30</strong> — Фуршет</p>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div><span style="font-weight: 800;">13:00</span> — Сбор гостей, welcome-фуршет</div>
+            <div><span style="font-weight: 800;">14:00</span> — Венчание ❤️</div>
+            <div><span style="font-weight: 800;">15:30</span> — Фуршет, танцы, поздравления</div>
+        </div>
     </div>
 
-    <div class="card">
+    <!-- Дресс-код -->
+    <div class="card" style="background: #ecf3e6;">
         <h2>🌿 Дресс-код</h2>
-        <p>Нежные, лесные оттенки: мята, пыльная роза, кремовый, лаванда, хаки. Без строгих чёрных костюмов.</p>
+        <p>Нежные лесные оттенки: мята, пыльная роза, кремовый, лаванда, хаки. Без строгих чёрных костюмов — давайте создадим атмосферу цветущего сада ✨</p>
     </div>
 
+    <!-- Карта и маршрут -->
     <div class="card">
         <h2>📍 Как добраться</h2>
         <p>Московская обл., Павлово-Посадский г.о., коттеджный пос. Дубрава-3, Мартовская ул., 284</p>
-        <p>Горьковское шоссе, 50 км</p>
-        <a class="map-btn" href="https://yandex.ru/maps/?text=Московская+обл.,+Павлово-Посадский+г.о.,+коттеджный+пос.+Дубрава-3,+Мартовская+ул.,+284" target="_blank">🗺️ Открыть маршрут</a>
+        <p style="margin-top: 6px;">Горьковское шоссе, 50 км</p>
+        <a class="map-btn" href="https://yandex.ru/maps/?text=Московская+обл.,+Павлово-Посадский+г.о.,+коттеджный+пос.+Дубрава-3,+Мартовская+ул.,+284" target="_blank">🗺️ Проложить маршрут в Яндекс.Картах</a>
     </div>
 
-    <div class="card">
-        <h2>🌸 Цветы в подарок</h2>
-        <p>Вместо букетов — присоединяйтесь к нашей цветочной подписке (ссылка скоро появится).</p>
-        <div style="background:#eee; width:128px; height:128px; margin:10px auto; display:flex; align-items:center; justify-content:center;">📱 QR-код</div>
+    <!-- Цветочная подписка + QR -->
+    <div class="card" style="text-align: center;">
+        <h2>🌸 Вместо букетов</h2>
+        <p>Присоединяйтесь к нашей цветочной подписке — мы будем получать ваши цветы весь год ❤️</p>
+        <div style="background: #fff0e0; width: 150px; height: 150px; margin: 20px auto; display: flex; align-items: center; justify-content: center; border-radius: 28px;">
+            🌼<br>QR-код<br>(скоро)
+        </div>
+        <p style="font-size: 14px;">Ссылка появится позже, а пока — просто тёплые слова</p>
     </div>
 
+    <!-- Пожелания -->
     <div class="card">
-        <h2>📖 Пожелания</h2>
+        <h2>📖 Напишите нам</h2>
         <input type="text" id="wishName" class="wish-input" placeholder="Ваше имя">
-        <textarea id="wishText" rows="2" class="wish-textarea" placeholder="Напишите пожелание..."></textarea>
-        <button onclick="addWish()" style="background:#5a7c5a; color:white; border:none; padding:10px 20px; border-radius:30px;">Отправить 💌</button>
-        <div id="wishList" style="margin-top:20px;"></div>
+        <textarea id="wishText" rows="2" class="wish-textarea" placeholder="Ваше пожелание..."></textarea>
+        <button class="wish-btn" onclick="addWish()">Отправить 💌</button>
+        <div id="wishList" style="margin-top: 24px;"></div>
     </div>
 
-    <footer>С нетерпением ждём встречи! Лера и Кирилл ♡</footer>
+    <footer>С нетерпением ждём встречи!<br>Лера и Кирилл ♡</footer>
 </div>
 
+<!-- Музыкальная кнопка -->
+<div class="music-btn" id="musicBtn">
+    <button id="playPauseBtn">🎵</button>
+    <span>Включить музыку</span>
+</div>
+
+<audio id="bgMusic" loop preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-    // Таймер
+    // ТАЙМЕР
     function updateTimer() {
         const wedding = new Date(2026, 6, 17, 13, 0, 0);
         const now = new Date();
@@ -180,7 +321,7 @@
             document.getElementById('seconds').innerText = '00';
             return;
         }
-        const days = Math.floor(diff / (1000*60*60*24));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (86400000)) / 3600000);
         const mins = Math.floor((diff % 3600000) / 60000);
         const secs = Math.floor((diff % 60000) / 1000);
@@ -192,20 +333,24 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // Пожелания
+    // ПОЖЕЛАНИЯ (хранятся в телефоне/браузере)
     function addWish() {
-        let name = document.getElementById('wishName').value;
-        let text = document.getElementById('wishText').value;
-        if (!name || !text) { alert("Напишите имя и пожелание"); return; }
-        let wishes = JSON.parse(localStorage.getItem('wishes') || '[]');
-        wishes.push({ name, text });
-        localStorage.setItem('wishes', JSON.stringify(wishes));
+        let name = document.getElementById('wishName').value.trim();
+        let text = document.getElementById('wishText').value.trim();
+        if (!name || !text) {
+            alert("Пожалуйста, напишите имя и пожелание ❤️");
+            return;
+        }
+        let wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
+        wishes.push({ name, text, date: new Date().toISOString() });
+        localStorage.setItem('weddingWishes', JSON.stringify(wishes));
         document.getElementById('wishName').value = '';
         document.getElementById('wishText').value = '';
         loadWishes();
     }
+
     function loadWishes() {
-        let wishes = JSON.parse(localStorage.getItem('wishes') || '[]');
+        let wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
         let container = document.getElementById('wishList');
         container.innerHTML = '';
         wishes.slice().reverse().forEach(w => {
@@ -215,6 +360,7 @@
             container.appendChild(div);
         });
     }
+
     function escapeHtml(str) {
         return str.replace(/[&<>]/g, function(m) {
             if (m === '&') return '&amp;';
@@ -224,6 +370,27 @@
         });
     }
     loadWishes();
+
+    // МУЗЫКА по кнопке
+    const audio = document.getElementById('bgMusic');
+    let isPlaying = false;
+    const playBtn = document.getElementById('playPauseBtn');
+    const musicBtnDiv = document.getElementById('musicBtn');
+
+    function toggleMusic() {
+        if (isPlaying) {
+            audio.pause();
+            playBtn.innerText = '🎵';
+            musicBtnDiv.querySelector('span').innerText = 'Включить музыку';
+        } else {
+            audio.play().catch(e => console.log("Автоплей заблокирован"));
+            playBtn.innerText = '⏸️';
+            musicBtnDiv.querySelector('span').innerText = 'Выключить музыку';
+        }
+        isPlaying = !isPlaying;
+    }
+
+    musicBtnDiv.addEventListener('click', toggleMusic);
 </script>
 </body>
 </html>
