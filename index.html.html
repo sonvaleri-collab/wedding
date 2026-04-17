@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Лера & Кирилл | Приглашение на свадьбу</title>
+    <!-- Яндекс Карты -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш-api-ключ&lang=ru_RU" type="text/javascript"></script>
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f5f0;
+            color: #2d2a24;
+            line-height: 1.5;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Секции */
+        section {
+            background: white;
+            border-radius: 32px;
+            padding: 30px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease;
+        }
+
+        /* Заголовки */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #3b5c3a;
+            letter-spacing: -0.3px;
+            display: inline-block;
+            border-bottom: 3px solid #e2c7a2;
+            padding-bottom: 5px;
+        }
+
+        /* Грид для фото */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .photo-card {
+            background: #fefaf5;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .photo-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .photo-card:hover img {
+            transform: scale(1.02);
+        }
+        .photo-caption {
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+            color: #6b5a4e;
+            background: #fff9f2;
+        }
+
+        /* Таймер */
+        .timer-wrapper {
+            background: #e9f0e5;
+            border-radius: 40px;
+            padding: 20px;
+            text-align: center;
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .timer-block {
+            background: white;
+            border-radius: 24px;
+            padding: 12px 20px;
+            min-width: 80px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .timer-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #3b5c3a;
+            line-height: 1;
+        }
+        .timer-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #7e6b5a;
+        }
+
+        /* Кнопка карты */
+        .map-button {
+            background: #3b5c3a;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .map-button:hover {
+            background: #2a4529;
+        }
+
+        /* Форма пожеланий */
+        .wish-form input, .wish-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #e2d5c6;
+            border-radius: 28px;
+            font-family: inherit;
+            background: #fffcf8;
+        }
+        .wish-form button {
+            background: #e2c7a2;
+            color: #2d2a24;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .wish-list {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .wish-item {
+            background: #fefaf5;
+            padding: 12px;
+            border-radius: 24px;
+            margin-bottom: 10px;
+            border-left: 4px solid #e2c7a2;
+        }
+
+        /* Музыка */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 60px;
+            padding: 8px 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .music-player button {
+            background: #3b5c3a;
+            border: none;
+            color: white;
+            font-size: 20px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0 20px;
+            font-size: 13px;
+            color: #a89886;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+            .timer-number {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- Герой -->
+    <section style="text-align: center; background: linear-gradient(145deg, #fff 0%, #fcf7f0 100%);">
+        <h1 style="font-family: 'Playfair Display'; font-size: 48px; margin-bottom: 8px;">Лера & Кирилл</h1>
+        <p style="font-size: 18px; color: #6b5a4e;">Приглашаем вас разделить с нами этот светлый день</p>
+        <div style="margin-top: 20px;">
+            <span style="background: #e2c7a2; padding: 6px 18px; border-radius: 40px; font-size: 14px;">17 июля 2026</span>
+        </div>
+    </section>
+
+    <!-- Таймер -->
+    <section>
+        <h2>До нашей свадьбы</h2>
+        <div class="timer-wrapper">
+            <div class="timer" id="timer">
+                <div class="timer-block"><div class="timer-number" id="days">00</div><div class="timer-label">Дней</div></div>
+                <div class="timer-block"><div class="timer-number" id="hours">00</div><div class="timer-label">Часов</div></div>
+                <div class="timer-block"><div class="timer-number" id="minutes">00</div><div class="timer-label">Минут</div></div>
+                <div class="timer-block"><div class="timer-number" id="seconds">00</div><div class="timer-label">Секунд</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Детские фото -->
+    <section>
+        <h2>🌼 Мы росли, чтобы встретиться</h2>
+        <div class="photo-grid" id="kids-photos">
+            <!-- сюда js добавит картинки -->
+        </div>
+    </section>
+
+    <!-- Взрослые фото -->
+    <section>
+        <h2>💑 А теперь мы вместе</h2>
+        <div class="photo-grid" id="adults-photos"></div>
+    </section>
+
+    <!-- Программа -->
+    <section>
+        <h2>🍃 Программа дня</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+            <div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-weight: 700; min-width: 90px;">13:00</span> <span>Сбор гостей, welcome-фуршет</span></div>
+            <div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-weight: 700; min-width: 90px;">14:00</span> <span>Венчание ❤️</span></div>
+            <div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-weight: 700; min-width: 90px;">15:30</span> <span>Фуршет, поздравления, танцы</span></div>
+        </div>
+    </section>
+
+    <!-- Дресс-код -->
+    <section style="background: #e9f0e5;">
+        <h2>🌿 Дресс-код</h2>
+        <p>Нам будет радостно видеть вас в нежных, лесных и лёгких оттенках: <strong>мята, пыльная роза, кремовый, лаванда, хаки, бежевый</strong>. Никаких строгих костюмов и чёрных платьев — давайте создадим атмосферу цветущего сада ✨</p>
+    </section>
+
+    <!-- Карта + маршрут -->
+    <section>
+        <h2>📍 Как добраться</h2>
+        <p>Московская обл., Павлово-Посадский г.о., коттеджный пос. Дубрава-3, Мартовская ул., 284<br>Горьковское шоссе, 50 км</p>
+        <div id="map" style="width: 100%; height: 300px; border-radius: 24px; margin: 15px 0;"></div>
+        <button class="map-button" onclick="openYandexMaps()">🗺️ Открыть маршрут в Яндекс Картах</button>
+    </section>
+
+    <!-- QR и цветочная подписка -->
+    <section>
+        <h2>🌸 Цветы в подарок</h2>
+        <p>Мы будем очень рады, если вместо традиционных букетов вы присоединитесь к нашей цветочной подписке — так мы сможем любоваться вашими цветами весь год.</p>
+        <div style="display: flex; justify-content: center; margin: 15px 0;">
+            <div id="qrcode" style="width: 160px; height: 160px; background: #f0ebe4; display: flex; align-items: center; justify-content: center; border-radius: 24px;">Здесь будет QR-код</div>
+        </div>
+        <p style="font-size: 14px; text-align: center;">(Ссылка появится позже, но код уже сгенерируется автоматически)</p>
+    </section>
+
+    <!-- Пожелания -->
+    <section>
+        <h2>📖 Тёплые слова для нас</h2>
+        <div class="wish-form">
+            <input type="text" id="wishName" placeholder="Ваше имя">
+            <textarea id="wishText" rows="3" placeholder="Напишите пожелание..."></textarea>
+            <button onclick="addWish()">Отправить пожелание 💌</button>
+        </div>
+        <div class="wish-list" id="wishList"></div>
+    </section>
+
+    <footer>
+        С нетерпением ждём встречи!<br>Лера и Кирилл ♡
+    </footer>
+</div>
+
+<!-- Музыка -->
+<div class="music-player" id="musicBtn">
+    <button id="playPauseBtn">🎵</button>
+    <span style="font-size: 13px;">Включить фон</span>
+</div>
+<audio id="bgMusic" loop preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+    // ---------------------- ТАЙМЕР --------------------------
+    function updateTimer() {
+        const weddingDate = new Date(2026, 6, 17, 13, 0, 0);
+        const now = new Date();
+        const diff = weddingDate - now;
+        if (diff <= 0) {
+            document.getElementById('days').innerText = '00';
+            document.getElementById('hours').innerText = '00';
+            document.getElementById('minutes').innerText = '00';
+            document.getElementById('seconds').innerText = '00';
+            return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (86400000)) / (3600000));
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        document.getElementById('days').innerText = days < 10 ? '0'+days : days;
+        document.getElementById('hours').innerText = hours < 10 ? '0'+hours : hours;
+        document.getElementById('minutes').innerText = minutes < 10 ? '0'+minutes : minutes;
+        document.getElementById('seconds').innerText = seconds < 10 ? '0'+seconds : seconds;
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // ---------------------- ФОТОГРАФИИ (заглушки) -----------------
+    // Вы замените ссылки на свои реальные фото, загрузив их в репозиторий!
+    const kidsImages = [
+        { src: "https://placehold.co/600x400/e2c7a2/ffffff?text=Лера+в+детстве", caption: "🌱 Маленькая Лера" },
+        { src: "https://placehold.co/600x400/d9e3d4/ffffff?text=Кирилл+в+детстве", caption: "🍃 Маленький Кирилл" }
+    ];
+    const adultsImages = [
+        { src: "https://placehold.co/600x400/c8dcc0/ffffff?text=Мы+встретились", caption: "Тогда всё и началось" },
+        { src: "https://placehold.co/600x400/b8cfad/ffffff?text=Счастливы+вместе", caption: "И теперь навсегда" }
+    ];
+
+    function renderPhotos(containerId, images) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        images.forEach(img => {
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+            card.innerHTML = `<img src="${img.src}" alt="${img.caption}" loading="lazy"><div class="photo-caption">${img.caption}</div>`;
+            container.appendChild(card);
+        });
+    }
+    renderPhotos('kids-photos', kidsImages);
+    renderPhotos('adults-photos', adultsImages);
+
+    // ---------------------- КАРТА (встроенная) -----------------
+    let map;
+    function initMap() {
+        const coords = [55.764, 38.645]; // координаты Павловского Посада, рядом с Дубравой-3 (можно уточнить)
+        map = new ymaps.Map("map", {
+            center: coords,
+            zoom: 13,
+            controls: ["zoomControl", "fullscreenControl"]
+        });
+        const placemark = new ymaps.Placemark(coords, {
+            balloonContent: "📍 Локация свадьбы<br>Мартовская ул., 284"
+        });
+        map.geoObjects.add(placemark);
+    }
+    ymaps.ready(initMap);
+
+    function openYandexMaps() {
+        const address = encodeURIComponent("Московская обл., Павлово-Посадский г.о., коттеджный пос. Дубрава-3, Мартовская ул., 284");
+        window.open(`https://yandex.ru/maps/?text=${address}`, '_blank');
+    }
+
+    // ---------------------- QR-код (на потом, но конструктор готов) -----------------
+    // ссылку замените позже, когда получите настоящую
+    const flowerUrl = "https://ваша-цветочная-подписка-будет-тут.ру";
+    new QRCode(document.getElementById("qrcode"), {
+        text: flowerUrl,
+        width: 128,
+        height: 128
+    });
+
+    // ---------------------- Пожелания (хранятся в localStorage) -----------------
+    function loadWishes() {
+        const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
+        const container = document.getElementById('wishList');
+        container.innerHTML = '';
+        wishes.slice().reverse().forEach(w => {
+            const div = document.createElement('div');
+            div.className = 'wish-item';
+            div.innerHTML = `<strong>${escapeHtml(w.name)}</strong><br>${escapeHtml(w.text)}`;
+            container.appendChild(div);
+        });
+    }
+    function addWish() {
+        const name = document.getElementById('wishName').value.trim();
+        const text = document.getElementById('wishText').value.trim();
+        if (!name || !text) { alert("Напишите имя и пожелание ❤️"); return; }
+        const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
+        wishes.push({ name, text, date: new Date().toISOString() });
+        localStorage.setItem('weddingWishes', JSON.stringify(wishes));
+        document.getElementById('wishName').value = '';
+        document.getElementById('wishText').value = '';
+        loadWishes();
+    }
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    loadWishes();
+
+    // ---------------------- МУЗЫКА (фон) -----------------
+    const audio = document.getElementById('bgMusic');
+    let isPlaying = false;
+    const playBtn = document.getElementById('playPauseBtn');
+    function toggleMusic() {
+        if (isPlaying) {
+            audio.pause();
+            playBtn.innerText = '🎵';
+        } else {
+            audio.play().catch(e => console.log("Автоплей заблокирован браузером"));
+            playBtn.innerText = '⏸️';
+        }
+        isPlaying = !isPlaying;
+    }
+    document.getElementById('musicBtn').addEventListener('click', toggleMusic);
+    
+    // маленькая хитрость: если юзер кликнет куда угодно, музыка не включится сама, только по кнопке
+</script>
+</body>
+</html>
