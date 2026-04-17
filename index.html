@@ -4,85 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Лера и Кирилл | Приглашение</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- ТОЛЬКО Kudry и Kudryachev Display -->
     <style>
+        @font-face {
+            font-family: 'Kudry';
+            src: url('https://cdn.jsdelivr.net/npm/@fontsource/kudry/400.css') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Kudryachev Display';
+            src: url('https://fonts.cdnfonts.com/css/kudryachev-display') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Playfair Display', 'Inter', serif;
-            background: #e6f0fa;  /* нежно-голубой фон */
-            color: #1e2a2a;
+            font-family: 'Kudry', 'Kudryachev Display', serif;
+            background: #C5BEA9;  /* Dune основной фон */
+            color: #5C6249;        /* Etrogy для текста */
             line-height: 1.45;
         }
-
-        /* Верхняя планка — sticky, убирается при скролле вверх */
+        /* Верхняя планка */
         .navbar {
             position: sticky;
             top: -100px;
-            background: rgba(230, 240, 250, 0.92);
-            backdrop-filter: blur(12px);
-            padding: 16px 24px;
+            background: rgba(197, 190, 169, 0.94);
+            backdrop-filter: blur(10px);
+            padding: 18px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Kudry', 'Kudryachev Display', serif;
             z-index: 100;
             transition: top 0.2s ease;
-            border-bottom: 1px solid #cbdde9;
+            border-bottom: 1px solid #9BA186;
         }
-        .navbar-visible {
-            top: 0;
-        }
+        .navbar-visible { top: 0; }
         .nav-logo {
-            font-size: 20px;
-            font-weight: 500;
-            letter-spacing: -0.3px;
-            color: #1e3a4d;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #5C6249;
         }
         .calendar-nav-btn {
             background: none;
-            border: 1px solid #8aaec0;
-            padding: 8px 20px;
-            border-radius: 60px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #1e3a4d;
+            border: 1px solid #9BA186;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 400;
+            font-family: 'Kudry', 'Kudryachev Display', serif;
+            color: #5C6249;
             cursor: pointer;
             transition: 0.2s;
         }
         .calendar-nav-btn:hover {
-            background: #d4e2ef;
+            background: #E1DBCA;
         }
-
         .main {
             max-width: 780px;
             margin: 0 auto;
             padding: 40px 24px 80px;
         }
-
         .block {
             margin-bottom: 64px;
             text-align: center;
         }
-
-        /* тили-тили тесто */
         .intro-tili {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
+            font-family: 'Kudryachev Display', 'Kudry', serif;
+            font-size: 28px;
             font-weight: 400;
-            color: #1e3a4d;
-            margin-bottom: 40px;
+            color: #5C6249;
+            margin-bottom: 36px;
+            letter-spacing: 1px;
         }
-
-        /* круглые фото + подписи */
+        /* круглые фото 1:1 */
         .photo-circle-grid {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 48px;
             flex-wrap: wrap;
             margin: 32px 0;
         }
@@ -95,48 +100,43 @@
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-            border: 2px solid #ffffffcc;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+            border: 2px solid #E1DBCA;
         }
         .photo-caption {
-            margin-top: 12px;
-            font-size: 16px;
-            font-weight: 500;
-            color: #2c4b5c;
+            margin-top: 14px;
+            font-size: 17px;
+            font-weight: 400;
+            color: #5C6249;
         }
-
-        /* цитата */
         .quote {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-family: 'Kudryachev Display', 'Kudry', serif;
+            font-size: 26px;
             font-style: italic;
-            color: #1e3a4d;
+            color: #848C67;
             max-width: 85%;
-            margin: 40px auto 20px;
+            margin: 48px auto 20px;
             line-height: 1.3;
         }
         .quote-author {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
+            font-family: 'Kudry', serif;
+            font-size: 15px;
             letter-spacing: 1px;
-            color: #6b8da8;
+            color: #9BA186;
             margin-top: 8px;
         }
-
         .date-large {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            color: #2c5a6e;
-            margin: 20px 0 12px;
+            font-family: 'Kudryachev Display', serif;
+            font-size: 38px;
+            color: #5C6249;
+            margin: 24px 0 12px;
         }
-
-        /* таймер */
         .timer-wrap {
             margin: 32px 0 20px;
         }
         .timer {
             display: flex;
-            gap: 24px;
+            gap: 28px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -145,93 +145,112 @@
             text-align: center;
         }
         .timer-number {
-            font-size: 48px;
-            font-weight: 500;
-            font-family: 'Playfair Display', serif;
-            color: #1e3a4d;
+            font-size: 52px;
+            font-weight: 400;
+            font-family: 'Kudryachev Display', serif;
+            color: #5C6249;
             line-height: 1;
         }
         .timer-label {
-            font-size: 12px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #6b8da8;
+            letter-spacing: 2px;
+            color: #848C67;
         }
-
-        /* текст про подарки — централизованный */
+        /* квадратное фото */
+        .square-photo {
+            margin: 32px auto;
+            max-width: 280px;
+        }
+        .square-photo img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 28px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+        }
         .gift-text {
             max-width: 90%;
             margin: 0 auto;
-            font-size: 16px;
+            font-size: 17px;
             line-height: 1.55;
-            color: #1e2a2a;
+            color: #5C6249;
         }
-
-        /* палитра цветов */
+        .schedule {
+            margin: 32px 0 24px;
+            text-align: left;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .schedule-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 16px;
+            font-size: 17px;
+            border-bottom: 1px solid #9BA186;
+            padding-bottom: 8px;
+        }
         .color-palette {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 24px;
             flex-wrap: wrap;
-            margin: 24px 0 16px;
+            margin: 28px 0 20px;
         }
         .color {
-            width: 56px;
-            height: 56px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
-
-        /* карта */
         .map-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #caddf0;
-            color: #1e3a4d;
-            padding: 10px 28px;
+            background: #E1DBCA;
+            color: #5C6249;
+            padding: 12px 32px;
             border-radius: 60px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
             margin-top: 16px;
         }
-
-        /* подпись внизу как письмо */
         .signature {
             text-align: right;
             margin-top: 80px;
-            font-size: 16px;
-            color: #2c5a6e;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            border-top: 1px solid #cbdde9;
+            font-size: 18px;
+            color: #5C6249;
+            font-family: 'Kudryachev Display', serif;
+            border-top: 1px solid #9BA186;
             padding-top: 32px;
         }
-
-        /* музыкальная крутящаяся пластинка */
+        /* винил с нотой */
         .vinyl-player {
             position: fixed;
-            bottom: 28px;
-            right: 28px;
-            width: 64px;
-            height: 64px;
-            background: #1e2f3a;
+            bottom: 32px;
+            right: 32px;
+            width: 88px;
+            height: 88px;
+            background: #2d2b20;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 1000;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.25);
             transition: 0.1s;
             animation: pulseGlow 1.8s infinite;
         }
-        .vinyl-player img {
-            width: 58px;
-            height: 58px;
+        .vinyl-player svg {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             transition: transform 0.1s linear;
             pointer-events: none;
+            fill: #E1DBCA;
         }
         .rotate {
             animation: spin 3s linear infinite;
@@ -241,54 +260,53 @@
             to { transform: rotate(360deg); }
         }
         @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(30, 58, 77, 0.4); }
-            70% { box-shadow: 0 0 0 12px rgba(30, 58, 77, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(30, 58, 77, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(92, 98, 73, 0.5); }
+            70% { box-shadow: 0 0 0 16px rgba(92, 98, 73, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(92, 98, 73, 0); }
         }
-
         @media (max-width: 600px) {
             .main { padding: 20px 20px 60px; }
-            .timer-number { font-size: 32px; }
+            .timer-number { font-size: 36px; }
             .photo-circle img { width: 140px; height: 140px; }
-            .quote { font-size: 20px; }
+            .quote { font-size: 22px; }
+            .vinyl-player { width: 72px; height: 72px; bottom: 20px; right: 20px; }
+            .vinyl-player svg { width: 56px; height: 56px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Верхняя планка -->
 <div class="navbar" id="navbar">
     <div class="nav-logo">Приглашение</div>
     <button class="calendar-nav-btn" id="calendarNavBtn">Добавить в календарь</button>
 </div>
 
 <div class="main">
-    <!-- тили-тили тесто -->
     <div class="block">
-        <div class="intro-tili">тили-тили тесто...</div>
+        <div class="intro-tili">Тили-тили тесто...</div>
     </div>
 
-    <!-- детские фото в кружочках -->
+    <!-- детские фото в круге -->
     <div class="block">
         <div class="photo-circle-grid">
             <div class="photo-circle">
-                <img src="https://placehold.co/400x400/d9e3d4/2c5a6e?text=Кирилл" alt="Кирилл">
-                <div class="photo-caption">Кирилл — жених</div>
+                <img src="https://placehold.co/400x400/d9e3d4/5C6249?text=Кирилл" alt="Кирилл">
+                <div class="photo-caption">Кирилл — жених,</div>
             </div>
             <div class="photo-circle">
-                <img src="https://placehold.co/400x400/e2c7a2/2c5a6e?text=Лера" alt="Лера">
+                <img src="https://placehold.co/400x400/e2c7a2/5C6249?text=Лера" alt="Лера">
                 <div class="photo-caption">а Лера — невеста</div>
             </div>
         </div>
     </div>
 
-    <!-- цитата Достоевского -->
+    <!-- цитата -->
     <div class="block">
         <div class="quote">«Кто любит людей, тот и радость их любит»</div>
         <div class="quote-author">Ф. М. Достоевский</div>
     </div>
 
-    <!-- дата и таймер -->
+    <!-- дата + таймер -->
     <div class="block">
         <div class="date-large">17 июля 2026</div>
         <div class="timer-wrap">
@@ -302,72 +320,84 @@
         </div>
     </div>
 
-    <!-- дорогие гости -->
+    <!-- дорогие гости + общая фотка в круге (без подписи) -->
     <div class="block">
-        <p style="font-size: 18px; font-weight: 500;">Дорогие гости!</p>
-        <p style="margin-top: 12px;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
+        <p style="font-size: 20px; font-weight: 500;">Дорогие гости!</p>
+        <p style="margin-top: 16px;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
     </div>
-
-    <!-- общая фотка в кружочке -->
     <div class="block">
         <div class="photo-circle" style="margin: 0 auto;">
-            <img src="https://placehold.co/400x400/b8cfad/ffffff?text=Мы" alt="Лера и Кирилл">
-            <div class="photo-caption">Лера и Кирилл</div>
+            <img src="https://placehold.co/400x400/b8cfad/ffffff?text=Лера+и+Кирилл" alt="Лера и Кирилл">
         </div>
     </div>
 
-    <!-- текст про подарки (без эмодзи, без заголовка) -->
+    <!-- подарки + квадратное фото после "в денежном эквиваленте" -->
     <div class="block">
         <div class="gift-text">
             Ваше присутствие в день нашей свадьбы — самый значимый подарок для нас!<br><br>
-            Если Вы всё же хотите порадовать нас материально, мы будем рады вашему подарку в денежном эквиваленте.<br><br>
+            Если Вы всё же хотите порадовать нас материально, мы будем рады вашему подарку в денежном эквиваленте.
+        </div>
+        <div class="square-photo">
+            <img src="https://placehold.co/500x500/c8dcc0/ffffff?text=Наша+история" alt="Наша история">
+        </div>
+        <div class="gift-text">
             Мы понимаем, что дарить цветы на свадьбу — это традиция, но мы не сможем насладиться их красотой в полной мере…<br>
             У нас есть отличное решение!<br><br>
             По qr-коду Вы можете внести комфортную сумму, которую хотели потратить на букет (сумма видна только вам).<br>
             А когда мы вернёмся из путешествия, цветочный магазин соберёт букет и доставит его! Так цветы будут радовать нас долго!
         </div>
-        <div style="background: #f4efe7; width: 140px; height: 140px; margin: 28px auto; border-radius: 28px; display: flex; align-items: center; justify-content: center;">
-            🌼 QR-код (скоро)
+        <div style="background: #E1DBCA; width: 140px; height: 140px; margin: 32px auto; border-radius: 28px; display: flex; align-items: center; justify-content: center;">
+            QR-код (скоро)
         </div>
     </div>
 
-    <!-- дресс-код без заголовка -->
+    <!-- расписание дня -->
     <div class="block">
-        <p style="margin-bottom: 20px;">Будем благодарны, если при выборе нарядов вы придержитесь следующей палитры:</p>
-        <div class="color-palette">
-            <div class="color" style="background: #b8cfad;"></div>
-            <div class="color" style="background: #d9c2b0;"></div>
-            <div class="color" style="background: #f2e6d5;"></div>
-            <div class="color" style="background: #d4cce0;"></div>
-            <div class="color" style="background: #9bb87f;"></div>
-            <div class="color" style="background: #c0d4e6;"></div>
+        <div class="schedule">
+            <div class="schedule-line"><span>13:30</span><span>встреча гостей</span></div>
+            <div class="schedule-line"><span>14:00</span><span>венчание</span></div>
+            <div class="schedule-line"><span>15:00</span><span>фуршет</span></div>
         </div>
-        <p style="margin-top: 20px;">Без строгих чёрных костюмов — создадим атмосферу цветущего сада</p>
+    </div>
+
+    <!-- дресс-код (без заголовка) -->
+    <div class="block">
+        <p style="margin-bottom: 24px;">Будем благодарны, если при выборе нарядов вы придержитесь следующей палитры:</p>
+        <div class="color-palette">
+            <div class="color" style="background: #C5BEA9;"></div>
+            <div class="color" style="background: #E1DBCA;"></div>
+            <div class="color" style="background: #9BA186;"></div>
+            <div class="color" style="background: #848C67;"></div>
+            <div class="color" style="background: #5C6249;"></div>
+        </div>
+        <p style="margin-top: 24px;">Без строгих чёрных костюмов — создадим атмосферу цветущего сада</p>
     </div>
 
     <!-- карта -->
     <div class="block">
         <p><strong>Как добраться</strong><br>Московская обл., Павлово-Посадский г.о., коттеджный пос. Дубрава-3, Мартовская ул., 284<br>Горьковское шоссе, 50 км</p>
-        <a class="map-link" href="https://yandex.ru/maps/?text=Московская+обл.,+Павлово-Посадский+г.о.,+коттеджный+пос.+Дубрава-3,+Мартовская+ул.,+284" target="_blank">🗺️ Проложить маршрут</a>
+        <a class="map-link" href="https://yandex.ru/maps/?text=Московская+обл.,+Павлово-Посадский+г.о.,+коттеджный+пос.+Дубрава-3,+Мартовская+ул.,+284" target="_blank">Проложить маршрут</a>
     </div>
 
-    <!-- подпись как письмо -->
     <div class="signature">
         мы будем рады вам!<br>Ваши Кирилл и Лера
     </div>
 </div>
 
-<!-- Круглая пульсирующая виниловая пластинка -->
+<!-- виниловая пластинка с нотой -->
 <div class="vinyl-player" id="musicBtn">
-    <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="vinyl" id="vinylImg">
+    <svg viewBox="0 0 100 100" width="70" height="70" id="vinylIcon">
+        <circle cx="50" cy="50" r="44" fill="#2d2b20" stroke="#E1DBCA" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="32" fill="none" stroke="#9BA186" stroke-width="0.8" stroke-dasharray="3 2"/>
+        <circle cx="50" cy="50" r="8" fill="#E1DBCA"/>
+        <text x="50" y="60" font-size="38" text-anchor="middle" fill="#E1DBCA" font-family="serif">♪</text>
+    </svg>
 </div>
 <audio id="bgMusic" loop preload="auto">
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    <!-- замените на реальный трек Lana Del Rey, если есть ссылка -->
 </audio>
 
 <script>
-    // === ТАЙМЕР ===
     function updateTimer() {
         const wedding = new Date(2026, 6, 17, 13, 30, 0);
         const now = new Date();
@@ -390,20 +420,15 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // === sticky navbar: показывается только при скролле вверх ===
     let lastScroll = 0;
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
-        if (currentScroll < lastScroll && currentScroll > 50) {
-            navbar.classList.add('navbar-visible');
-        } else if (currentScroll > lastScroll || currentScroll < 30) {
-            navbar.classList.remove('navbar-visible');
-        }
+        if (currentScroll < lastScroll && currentScroll > 50) navbar.classList.add('navbar-visible');
+        else if (currentScroll > lastScroll || currentScroll < 30) navbar.classList.remove('navbar-visible');
         lastScroll = currentScroll;
     });
 
-    // === КАЛЕНДАРЬ (обе кнопки) ===
     function downloadCalendar() {
         const start = new Date(2026, 6, 17, 13, 30);
         const end = new Date(2026, 6, 17, 19, 0);
@@ -415,7 +440,6 @@ SUMMARY:Свадьба Леры и Кирилла
 DTSTART:${format(start)}
 DTEND:${format(end)}
 LOCATION:Московская обл., Павлово-Посадский г.о., коттеджный пос. Дубрава-3, Мартовская ул., 284
-DESCRIPTION:Дорогие гости! Ждём вас на нашей свадьбе.
 BEGIN:VALARM
 TRIGGER:-PT1H
 ACTION:DISPLAY
@@ -432,21 +456,19 @@ END:VCALENDAR`;
     }
     document.getElementById('calendarNavBtn').addEventListener('click', downloadCalendar);
 
-    // === МУЗЫКА: винил крутится, пульсирует ===
     const audioEl = document.getElementById('bgMusic');
     const vinylBtn = document.getElementById('musicBtn');
-    const vinylImg = document.getElementById('vinylImg');
-    let isPlayingMusic = false;
-
+    const vinylIcon = document.getElementById('vinylIcon');
+    let isPlaying = false;
     vinylBtn.addEventListener('click', () => {
-        if (isPlayingMusic) {
+        if (isPlaying) {
             audioEl.pause();
-            vinylImg.classList.remove('rotate');
+            vinylIcon.classList.remove('rotate');
         } else {
-            audioEl.play().catch(e => console.log("Автоплей заблокирован, нажмите ещё раз"));
-            vinylImg.classList.add('rotate');
+            audioEl.play().catch(e => console.log("нажмите ещё раз"));
+            vinylIcon.classList.add('rotate');
         }
-        isPlayingMusic = !isPlayingMusic;
+        isPlaying = !isPlaying;
     });
 </script>
 </body>
