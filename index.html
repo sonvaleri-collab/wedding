@@ -21,28 +21,28 @@
         }
         body {
             font-family: 'Kudry', 'Kudryachev Display', serif;
-            background: #F5F0E6;  /* White Jade фон */
-            color: #A9A9A9;
+            background: #C5D8E8;  /* Whispy Blue */
+            color: #5A6B7A;
             line-height: 1.45;
             position: relative;
         }
-        /* мелованные рисунки на фоне */
+        /* мелованные рисунки */
         .doodle {
             position: fixed;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.35;
+            opacity: 0.3;
         }
         .doodle-1 { top: 5%; left: 3%; width: 80px; }
         .doodle-2 { bottom: 12%; right: 2%; width: 100px; transform: rotate(15deg); }
         .doodle-3 { top: 20%; right: 5%; width: 70px; transform: rotate(-10deg); }
         .doodle-4 { bottom: 30%; left: 4%; width: 90px; }
         .doodle-5 { top: 40%; left: 8%; width: 50px; }
-        /* верхняя планка без слова Приглашение */
+        /* верхняя планка */
         .navbar {
             position: sticky;
             top: -100px;
-            background: rgba(245, 240, 230, 0.92);
+            background: rgba(197, 216, 232, 0.92);
             backdrop-filter: blur(12px);
             padding: 16px 24px;
             display: flex;
@@ -50,22 +50,22 @@
             align-items: center;
             z-index: 100;
             transition: top 0.2s ease;
-            border-bottom: 1px solid #E2D4C0;
+            border-bottom: 1px solid #B0C4DE;
         }
         .navbar-visible { top: 0; }
         .calendar-nav-btn {
             background: none;
-            border: 1px solid #C2B59B;
+            border: 1px solid #8DA6C2;
             padding: 8px 22px;
             border-radius: 40px;
             font-size: 15px;
             font-family: 'Kudry', serif;
-            color: #6A5C4E;
+            color: #4A5B6E;
             cursor: pointer;
             transition: 0.2s;
         }
         .calendar-nav-btn:hover {
-            background: #F0E5D5;
+            background: #E6F0F8;
         }
         .main {
             max-width: 780px;
@@ -81,13 +81,14 @@
         .intro-tili {
             font-family: 'Kudryachev Display', 'Kudry', serif;
             font-size: 28px;
-            color: #6A5C4E;
+            color: #4A5B6E;
             margin-bottom: 36px;
         }
         .photo-circle-grid {
             display: flex;
             justify-content: center;
-            gap: 48px;
+            align-items: center;
+            gap: 20px;
             flex-wrap: wrap;
             margin: 32px 0;
         }
@@ -101,18 +102,24 @@
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
-            border: 2px solid #E6D8C6;
+            border: 2px solid #E6F0F8;
         }
         .photo-caption {
             margin-top: 14px;
             font-size: 17px;
-            color: #6A5C4E;
+            color: #4A5B6E;
+        }
+        .plus-sign {
+            font-size: 48px;
+            font-weight: 300;
+            color: #8DA6C2;
+            margin: 0 8px;
         }
         .quote {
             font-family: 'Kudryachev Display', 'Kudry', serif;
             font-size: 26px;
             font-style: italic;
-            color: #B6A07E;
+            color: #7A8FA8;
             max-width: 85%;
             margin: 48px auto 20px;
             line-height: 1.3;
@@ -121,12 +128,12 @@
             font-family: 'Kudry', serif;
             font-size: 15px;
             letter-spacing: 1px;
-            color: #C2B59B;
+            color: #8DA6C2;
         }
         .date-large {
             font-family: 'Kudryachev Display', serif;
             font-size: 38px;
-            color: #6A5C4E;
+            color: #4A5B6E;
             margin: 24px 0 12px;
         }
         .timer {
@@ -143,13 +150,13 @@
             font-size: 52px;
             font-weight: 400;
             font-family: 'Kudryachev Display', serif;
-            color: #6A5C4E;
+            color: #4A5B6E;
         }
         .timer-label {
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #C2B59B;
+            color: #8DA6C2;
         }
         .square-photo {
             margin: 32px auto;
@@ -166,13 +173,12 @@
             margin: 0 auto;
             font-size: 17px;
             line-height: 1.55;
-            color: #6A5C4E;
+            color: #4A5B6E;
         }
-        /* рукописный заголовок расписания */
         .schedule-title {
             font-family: 'Kudryachev Display', 'Kudry', serif;
             font-size: 32px;
-            color: #B6A07E;
+            color: #7A8FA8;
             margin-bottom: 28px;
             letter-spacing: 1px;
         }
@@ -187,11 +193,10 @@
             gap: 24px;
             margin-bottom: 16px;
             font-size: 17px;
-            border-bottom: 1px solid #E2D4C0;
+            border-bottom: 1px solid #B0C4DE;
             padding-bottom: 8px;
-            color: #6A5C4E;
+            color: #4A5B6E;
         }
-        /* цвета дресс-кода из вашей палитры */
         .color-palette {
             display: flex;
             justify-content: center;
@@ -209,8 +214,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #E6D8C6;
-            color: #6A5C4E;
+            background: #B0C4DE;
+            color: #4A5B6E;
             padding: 12px 32px;
             border-radius: 60px;
             text-decoration: none;
@@ -220,12 +225,11 @@
             text-align: right;
             margin-top: 80px;
             font-size: 18px;
-            color: #6A5C4E;
+            color: #4A5B6E;
             font-family: 'Kudryachev Display', serif;
-            border-top: 1px solid #E2D4C0;
+            border-top: 1px solid #B0C4DE;
             padding-top: 32px;
         }
-        /* пластинка выше, чтобы не перекрывать подпись */
         .vinyl-player {
             position: fixed;
             bottom: 80px;
@@ -256,9 +260,9 @@
             to { transform: rotate(360deg); }
         }
         @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(106, 92, 78, 0.4); }
-            70% { box-shadow: 0 0 0 14px rgba(106, 92, 78, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(106, 92, 78, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(74, 91, 110, 0.4); }
+            70% { box-shadow: 0 0 0 14px rgba(74, 91, 110, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 91, 110, 0); }
         }
         @media (max-width: 600px) {
             .main { padding: 20px 20px 100px; }
@@ -274,27 +278,27 @@
 
 <!-- мелованные рисунки -->
 <svg class="doodle doodle-1" viewBox="0 0 100 100">
-    <path d="M20,50 Q35,30 50,50 T80,50" stroke="#B6A07E" fill="none" stroke-width="2" stroke-dasharray="2 3"/>
-    <circle cx="30" cy="45" r="2" fill="#C2B59B"/>
-    <circle cx="70" cy="45" r="2" fill="#C2B59B"/>
-    <path d="M45,55 L55,55 L50,65 Z" fill="#E6D8C6"/>
+    <path d="M20,50 Q35,30 50,50 T80,50" stroke="#8DA6C2" fill="none" stroke-width="2" stroke-dasharray="2 3"/>
+    <circle cx="30" cy="45" r="2" fill="#B0C4DE"/>
+    <circle cx="70" cy="45" r="2" fill="#B0C4DE"/>
+    <path d="M45,55 L55,55 L50,65 Z" fill="#E6F0F8"/>
 </svg>
 <svg class="doodle doodle-2" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="18" fill="none" stroke="#B6A07E" stroke-width="1.5" stroke-dasharray="3 2"/>
-    <path d="M50,32 L50,68 M32,50 L68,50" stroke="#B6A07E" stroke-width="1.2"/>
-    <circle cx="50" cy="50" r="4" fill="#C2B59B"/>
+    <circle cx="50" cy="50" r="18" fill="none" stroke="#8DA6C2" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <path d="M50,32 L50,68 M32,50 L68,50" stroke="#8DA6C2" stroke-width="1.2"/>
+    <circle cx="50" cy="50" r="4" fill="#B0C4DE"/>
 </svg>
 <svg class="doodle doodle-3" viewBox="0 0 100 100">
-    <path d="M30,50 Q50,20 70,50" fill="none" stroke="#B6A07E" stroke-width="2" stroke-dasharray="2 2"/>
-    <path d="M40,60 Q50,45 60,60" fill="none" stroke="#C2B59B" stroke-width="1.5"/>
+    <path d="M30,50 Q50,20 70,50" fill="none" stroke="#8DA6C2" stroke-width="2" stroke-dasharray="2 2"/>
+    <path d="M40,60 Q50,45 60,60" fill="none" stroke="#B0C4DE" stroke-width="1.5"/>
 </svg>
 <svg class="doodle doodle-4" viewBox="0 0 100 100">
-    <polygon points="50,20 60,45 85,45 65,60 75,85 50,70 25,85 35,60 15,45 40,45" fill="none" stroke="#E6D8C6" stroke-width="1.5"/>
+    <polygon points="50,20 60,45 85,45 65,60 75,85 50,70 25,85 35,60 15,45 40,45" fill="none" stroke="#E6F0F8" stroke-width="1.5"/>
 </svg>
 <svg class="doodle doodle-5" viewBox="0 0 100 100">
-    <path d="M20,80 L80,20" stroke="#C2B59B" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <circle cx="30" cy="70" r="3" fill="#B6A07E"/>
-    <circle cx="70" cy="30" r="3" fill="#B6A07E"/>
+    <path d="M20,80 L80,20" stroke="#B0C4DE" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <circle cx="30" cy="70" r="3" fill="#8DA6C2"/>
+    <circle cx="70" cy="30" r="3" fill="#8DA6C2"/>
 </svg>
 
 <div class="navbar" id="navbar">
@@ -306,14 +310,16 @@
         <div class="intro-tili">Тили-тили тесто...</div>
     </div>
 
+    <!-- детские фото с плюсом между ними -->
     <div class="block">
         <div class="photo-circle-grid">
             <div class="photo-circle">
-                <img src="https://placehold.co/400x400/d9e3d4/6A5C4E?text=Кирилл" alt="Кирилл">
+                <img src="https://placehold.co/400x400/d9e3d4/4A5B6E?text=Кирилл" alt="Кирилл">
                 <div class="photo-caption">Кирилл — жених,</div>
             </div>
+            <div class="plus-sign">+</div>
             <div class="photo-circle">
-                <img src="https://placehold.co/400x400/e2c7a2/6A5C4E?text=Лера" alt="Лера">
+                <img src="https://placehold.co/400x400/e2c7a2/4A5B6E?text=Лера" alt="Лера">
                 <div class="photo-caption">а Лера — невеста</div>
             </div>
         </div>
@@ -336,8 +342,8 @@
     </div>
 
     <div class="block">
-        <p style="font-size: 20px; font-weight: 500; color:#6A5C4E;">Дорогие гости!</p>
-        <p style="margin-top: 16px; color:#6A5C4E;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
+        <p style="font-size: 20px; font-weight: 500; color:#4A5B6E;">Дорогие гости!</p>
+        <p style="margin-top: 16px; color:#4A5B6E;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
     </div>
     <div class="block">
         <div class="photo-circle" style="margin: 0 auto;">
@@ -348,7 +354,7 @@
     <div class="block">
         <div class="gift-text">
             Ваше присутствие в день нашей свадьбы — самый значимый подарок для нас!<br><br>
-            Если Вы всё же хотите порадовать нас материально, мы будем рады вашему подарку в денежном эквиваленте.
+            Ваши пожелания в конвертах будут лучшими подарками, которые помогут исполнить наши мечты.
         </div>
         <div class="square-photo">
             <img src="https://placehold.co/500x500/c8dcc0/ffffff?text=Наша+история" alt="Наша история">
@@ -359,7 +365,7 @@
             По qr-коду Вы можете внести комфортную сумму, которую хотели потратить на букет (сумма видна только вам).<br>
             А когда мы вернёмся из путешествия, цветочный магазин соберёт букет и доставит его! Так цветы будут радовать нас долго!
         </div>
-        <div style="background: #E6D8C6; width: 140px; height: 140px; margin: 32px auto; border-radius: 28px; display: flex; align-items: center; justify-content: center;">
+        <div style="background: #E6F0F8; width: 140px; height: 140px; margin: 32px auto; border-radius: 28px; display: flex; align-items: center; justify-content: center;">
             QR-код (скоро)
         </div>
     </div>
@@ -374,7 +380,7 @@
     </div>
 
     <div class="block">
-        <p style="margin-bottom: 24px; color:#6A5C4E;">Будем благодарны, если при выборе нарядов вы придержитесь следующей палитры:</p>
+        <p style="margin-bottom: 24px; color:#4A5B6E;">Будем благодарны, если при выборе нарядов вы придержитесь следующей палитры:</p>
         <div class="color-palette">
             <div class="color" style="background: #F2E1B3;"></div>  <!-- Mellow Yellow -->
             <div class="color" style="background: #F2D9C2;"></div>  <!-- Bleached Apricot -->
@@ -382,12 +388,13 @@
             <div class="color" style="background: #D6B8D6;"></div>  <!-- Winsome Orchid -->
             <div class="color" style="background: #C5E0E8;"></div>  <!-- Baby Blue -->
             <div class="color" style="background: #E6E0D0;"></div>  <!-- White Jade -->
+            <div class="color" style="background: #C5E0B4;"></div>  <!-- Pastel Green -->
         </div>
-        <p style="margin-top: 24px; color:#6A5C4E;">Без строгих чёрных костюмов — создадим атмосферу цветущего сада</p>
+        <p style="margin-top: 24px; color:#4A5B6E;">Без строгих чёрных костюмов — создадим атмосферу цветущего сада</p>
     </div>
 
     <div class="block">
-        <p style="color:#6A5C4E;"><strong>Как добраться</strong><br>Московская обл., Павлово-Посадский г.о., коттеджный пос. Дубрава-3, Мартовская ул., 284<br>Горьковское шоссе, 50 км</p>
+        <p style="color:#4A5B6E;"><strong>Как добраться</strong><br>Московская обл., Павлово-Посадский г.о., коттеджный пос. Дубрава-3, Мартовская ул., 284<br>Горьковское шоссе, 50 км</p>
         <a class="map-link" href="https://yandex.ru/maps/?text=Московская+обл.,+Павлово-Посадский+г.о.,+коттеджный+пос.+Дубрава-3,+Мартовская+ул.,+284" target="_blank">Проложить маршрут</a>
     </div>
 
@@ -398,10 +405,10 @@
 
 <div class="vinyl-player" id="musicBtn">
     <svg viewBox="0 0 100 100" width="70" height="70" id="vinylIcon">
-        <circle cx="50" cy="50" r="44" fill="#2d2b20" stroke="#E6D8C6" stroke-width="1.5"/>
-        <circle cx="50" cy="50" r="32" fill="none" stroke="#C2B59B" stroke-width="0.8" stroke-dasharray="3 2"/>
-        <circle cx="50" cy="50" r="8" fill="#E6D8C6"/>
-        <text x="50" y="60" font-size="38" text-anchor="middle" fill="#E6D8C6" font-family="serif">♪</text>
+        <circle cx="50" cy="50" r="44" fill="#2d2b20" stroke="#B0C4DE" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="32" fill="none" stroke="#8DA6C2" stroke-width="0.8" stroke-dasharray="3 2"/>
+        <circle cx="50" cy="50" r="8" fill="#B0C4DE"/>
+        <text x="50" y="60" font-size="38" text-anchor="middle" fill="#B0C4DE" font-family="serif">♪</text>
     </svg>
 </div>
 <audio id="bgMusic" loop preload="auto">
@@ -483,4 +490,4 @@ END:VCALENDAR`;
     });
 </script>
 </body>
-    </html>
+</html>
