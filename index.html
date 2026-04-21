@@ -123,38 +123,46 @@
             color: #2c3e4e;
             margin: 24px 0 12px;
         }
-        /* Полароид с широкой нижней плашкой (как Instax) */
-        .instax-polaroid {
+        /* Универсальный контейнер для фото */
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        /* Стиль для полароида (универсальный) */
+        .polaroid-card {
             background: white;
-            padding: 12px 12px 30px 12px;
+            padding: 12px 12px 25px 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
             display: inline-block;
             border-radius: 4px;
+            width: 250px;
+            text-align: center;
         }
-        .instax-polaroid img {
+        .polaroid-card img {
             width: 100%;
             height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
             display: block;
             border-radius: 2px;
         }
-        .photo-circle-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin: 32px 0;
-        }
-        .photo-circle {
-            text-align: center;
-            width: 220px;
-        }
-        .photo-caption {
-            margin-top: 16px;
-            font-size: 18px;
+        .polaroid-caption {
+            margin-top: 12px;
+            font-size: 16px;
             color: #2c3e4e;
             font-family: 'Cormorant Infant', serif;
             font-weight: 600;
+        }
+        /* Для одиночного фото */
+        .single-photo {
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        .single-photo .polaroid-card {
+            width: 100%;
         }
         .quote {
             font-size: 26px;
@@ -192,8 +200,8 @@
             color: #6b8db0;
         }
         .square-photo {
-            margin: 32px auto;
             max-width: 280px;
+            margin: 32px auto;
         }
         .gift-text {
             max-width: 90%;
@@ -321,7 +329,7 @@
             .quote { font-size: 22px; }
             .vinyl-player { bottom: 70px; right: 20px; width: 72px; height: 72px; }
             .vinyl-player svg { width: 56px; height: 56px; }
-            .photo-circle { width: 180px; }
+            .polaroid-card { width: 200px; }
         }
     </style>
 </head>
@@ -329,25 +337,21 @@
 
 <!-- Сердечки выше и с двух сторон -->
 <div class="parallax-container" id="parallaxContainer">
-    <!-- Белое заполненное сердечко -->
     <div class="doodle doodle-1">
         <svg viewBox="0 0 100 100">
             <path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z" fill="white"/>
         </svg>
     </div>
-    <!-- Белое контурное сердечко -->
     <div class="doodle doodle-2">
         <svg viewBox="0 0 100 100">
             <path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z" fill="none" stroke="white" stroke-width="1.5"/>
         </svg>
     </div>
-    <!-- Белое заполненное сердечко (чуть ниже) -->
     <div class="doodle doodle-3">
         <svg viewBox="0 0 100 100">
             <path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z" fill="white"/>
         </svg>
     </div>
-    <!-- Белое контурное сердечко -->
     <div class="doodle doodle-4">
         <svg viewBox="0 0 100 100">
             <path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z" fill="none" stroke="white" stroke-width="1.5"/>
@@ -364,20 +368,16 @@
         <div class="intro-tili">Тили-тили тесто...</div>
     </div>
 
-    <!-- Детские фото (полароид как Instax) -->
+    <!-- Детские фото -->
     <div class="block">
-        <div class="photo-circle-grid">
-            <div class="photo-circle">
-                <div class="instax-polaroid">
-                    <img src="https://placehold.co/400x400/e2c7a2/ffffff?text=Кирилл" alt="Кирилл">
-                </div>
-                <div class="photo-caption">Кирилл — жених,</div>
+        <div class="photo-container">
+            <div class="polaroid-card">
+                <img src="https://placehold.co/400x400/e2c7a2/ffffff?text=Кирилл" alt="Кирилл">
+                <div class="polaroid-caption">Кирилл — жених,</div>
             </div>
-            <div class="photo-circle">
-                <div class="instax-polaroid">
-                    <img src="https://placehold.co/400x400/e2c7a2/ffffff?text=Лера" alt="Лера">
-                </div>
-                <div class="photo-caption">а Лера — невеста</div>
+            <div class="polaroid-card">
+                <img src="https://placehold.co/400x400/e2c7a2/ffffff?text=Лера" alt="Лера">
+                <div class="polaroid-caption">а Лера — невеста</div>
             </div>
         </div>
     </div>
@@ -404,9 +404,9 @@
     </div>
 
     <!-- Фото после слов "этого незабываемого дня" -->
-    <div class="block">
-        <div class="polaroid" style="max-width: 320px; margin: 0 auto;">
-            <img id="photoAfterDay" src="9ZdunzH2RZcAqYNl_VtmQB0hSiJwN3zZz2Ev_Ph57XF5s7QF5PoD_ZOy_blHEpT2Hh-R_0TdfG_Vr6mNowNPnne8.jpg" alt="Лера и Кирилл">
+    <div class="block single-photo">
+        <div class="polaroid-card">
+            <img src="9ZdunzH2RZcAqYNl_VtmQB0hSiJwN3zZz2Ev_Ph57XF5s7QF5PoD_ZOy_blHEpT2Hh-R_0TdfG_Vr6mNowNPnne8.jpg" alt="Лера и Кирилл">
         </div>
     </div>
 
@@ -418,7 +418,7 @@
 
         <!-- Фото после слов "наши мечты" -->
         <div class="square-photo">
-            <div class="polaroid">
+            <div class="polaroid-card">
                 <img src="IMG_2208-2.jpg" alt="Наша история">
             </div>
         </div>
@@ -430,7 +430,6 @@
             А когда мы вернёмся из путешествия, цветочный магазин соберёт букет и доставит его! Так цветы будут радовать нас долго!
         </div>
 
-        <!-- QR-код (кликабельный) -->
         <a href="https://bloomles.ru/product/valeria-kirill/" target="_blank" class="qr-clickable">
             <img src="70ace61e11add1cedf4d1bef60812b4e.png" alt="QR-код">
         </a>
@@ -483,6 +482,7 @@
 </audio>
 
 <script>
+    // Таймер (без изменений)
     function updateTimer() {
         const wedding = new Date(2026, 6, 17, 13, 30, 0);
         const now = new Date();
@@ -505,6 +505,7 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
+    // Плавная планка
     let lastScroll = 0;
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -514,6 +515,7 @@
         lastScroll = currentScroll;
     });
 
+    // Календарь
     function downloadCalendar() {
         const start = new Date(2026, 6, 17, 13, 30);
         const end = new Date(2026, 6, 17, 19, 0);
@@ -541,6 +543,7 @@ END:VCALENDAR`;
     }
     document.getElementById('calendarNavBtn').addEventListener('click', downloadCalendar);
 
+    // Музыка
     const audioEl = document.getElementById('bgMusic');
     const vinylBtn = document.getElementById('musicBtn');
     const vinylIcon = document.getElementById('vinylIcon');
@@ -556,6 +559,7 @@ END:VCALENDAR`;
         isPlaying = !isPlaying;
     });
 
+    // Параллакс
     const parallaxElements = document.querySelectorAll('.doodle');
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
