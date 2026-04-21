@@ -23,10 +23,9 @@
             background: #C5D8E8;
             color: #2c3e4e;
             line-height: 1.45;
-            position: relative;
             overflow-x: hidden;
         }
-        /* Контейнер для двигающихся рисунков */
+        /* Контейнер для параллакс-рисунков */
         .parallax-container {
             position: fixed;
             top: 0;
@@ -40,10 +39,10 @@
         .doodle {
             position: absolute;
             pointer-events: none;
-            opacity: 0.65;
-            transition: transform 0.05s linear;
+            opacity: 0.6;
             will-change: transform;
         }
+        /* Все рисунки — только сердечки и самолётики (никаких звёзд) */
         .doodle svg {
             stroke: #1a1a1a;
             stroke-width: 1.2;
@@ -53,18 +52,17 @@
             fill: #1a1a1a;
             stroke: none;
         }
-        /* Позиции рисунков (стартовые) */
-        .doodle-1 { top: 6%; left: 2%; width: 70px; }
-        .doodle-2 { top: 12%; right: 3%; width: 60px; transform: rotate(15deg); }
-        .doodle-3 { bottom: 18%; left: 4%; width: 80px; transform: rotate(-10deg); }
-        .doodle-4 { bottom: 25%; right: 5%; width: 65px; }
-        .doodle-5 { top: 40%; left: 7%; width: 50px; transform: rotate(45deg); }
-        .doodle-6 { top: 70%; right: 8%; width: 55px; }
-        .doodle-7 { bottom: 10%; left: 15%; width: 45px; }
-        .doodle-8 { top: 85%; left: 80%; width: 40px; }
-        .doodle-9 { top: 50%; left: 88%; width: 48px; }
-        .doodle-10 { top: 20%; left: 85%; width: 55px; transform: rotate(25deg); }
-        .doodle-11 { bottom: 40%; right: 12%; width: 60px; }
+        /* Позиции рисунков */
+        .doodle-1 { top: 5%; left: 3%; width: 65px; }
+        .doodle-2 { top: 12%; right: 4%; width: 55px; transform: rotate(15deg); }
+        .doodle-3 { bottom: 20%; left: 5%; width: 75px; transform: rotate(-10deg); }
+        .doodle-4 { bottom: 15%; right: 6%; width: 60px; }
+        .doodle-5 { top: 35%; left: 8%; width: 50px; transform: rotate(25deg); }
+        .doodle-6 { top: 65%; right: 7%; width: 55px; }
+        .doodle-7 { bottom: 8%; left: 12%; width: 45px; }
+        .doodle-8 { top: 80%; left: 85%; width: 42px; }
+        .doodle-9 { top: 45%; left: 90%; width: 48px; transform: rotate(20deg); }
+        .doodle-10 { bottom: 45%; right: 10%; width: 58px; }
         
         /* Верхняя планка */
         .navbar {
@@ -102,18 +100,18 @@
             padding: 40px 24px 100px;
             position: relative;
             z-index: 2;
-            background: transparent;
         }
         .block {
             margin-bottom: 64px;
             text-align: center;
         }
+        /* Специальные шрифты */
         .intro-tili, .guests-title, .schedule-title, .signature-text {
             font-family: 'Le Fardin', cursive;
             font-weight: normal;
         }
         .intro-tili {
-            font-size: 34px;
+            font-size: 38px;
             color: #2c3e4e;
             margin-bottom: 36px;
         }
@@ -173,8 +171,9 @@
             color: #6b8db0;
         }
         .date-large {
+            font-family: 'Le Fardin', cursive;
             font-size: 44px;
-            font-weight: 600;
+            font-weight: normal;
             color: #2c3e4e;
             margin: 24px 0 12px;
         }
@@ -266,18 +265,27 @@
             font-size: 18px;
             margin-top: 8px;
         }
-        /* Кликабельный QR-код */
+        /* Пульсирующая рамка для QR-кода */
+        @keyframes pulseBorder {
+            0% { box-shadow: 0 0 0 0 rgba(44, 62, 78, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(44, 62, 78, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(44, 62, 78, 0); }
+        }
         .qr-clickable {
             margin: 32px auto;
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
             cursor: pointer;
             transition: transform 0.2s ease;
+            animation: pulseBorder 2s infinite;
+            border-radius: 16px;
+            display: block;
         }
         .qr-clickable img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            border-radius: 16px;
         }
         .qr-clickable:hover {
             transform: scale(1.02);
@@ -328,15 +336,15 @@
 </head>
 <body>
 
-<!-- Контейнер с двигающимися рисунками -->
+<!-- Контейнер с рисунками (только сердечки и самолётики) -->
 <div class="parallax-container" id="parallaxContainer">
-    <!-- Сердечко 1 (заполненное) -->
+    <!-- Сердечко чёрное заполненное -->
     <div class="doodle doodle-1">
         <svg viewBox="0 0 100 100">
             <path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z" fill="#1a1a1a"/>
         </svg>
     </div>
-    <!-- Самолётик 1 -->
+    <!-- Самолётик чёрный -->
     <div class="doodle doodle-2">
         <svg viewBox="0 0 100 100">
             <path d="M20,50 Q35,30 50,50 T80,50" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
@@ -344,27 +352,27 @@
             <circle cx="70" cy="45" r="2" fill="#1a1a1a"/>
         </svg>
     </div>
-    <!-- Сердечко 2 (контурное) -->
+    <!-- Сердечко белое контурное -->
     <div class="doodle doodle-3">
         <svg viewBox="0 0 100 100">
-            <path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+            <path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z" fill="none" stroke="white" stroke-width="1.5"/>
         </svg>
     </div>
-    <!-- Самолётик 2 -->
+    <!-- Самолётик белый -->
     <div class="doodle doodle-4">
         <svg viewBox="0 0 100 100">
-            <path d="M30,60 L50,40 L70,60" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
-            <circle cx="45" cy="55" r="2" fill="#1a1a1a"/>
-            <circle cx="55" cy="45" r="2" fill="#1a1a1a"/>
+            <path d="M30,60 L50,40 L70,60" fill="none" stroke="white" stroke-width="1.5"/>
+            <circle cx="45" cy="55" r="2" fill="white"/>
+            <circle cx="55" cy="45" r="2" fill="white"/>
         </svg>
     </div>
-    <!-- Сердечко 3 (заполненное маленькое) -->
+    <!-- Сердечко чёрное маленькое -->
     <div class="doodle doodle-5">
         <svg viewBox="0 0 100 100">
             <path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z" fill="#1a1a1a"/>
         </svg>
     </div>
-    <!-- Самолётик 3 -->
+    <!-- Самолётик чёрный -->
     <div class="doodle doodle-6">
         <svg viewBox="0 0 100 100">
             <path d="M25,50 Q40,35 60,50 T85,50" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
@@ -372,37 +380,31 @@
             <circle cx="65" cy="55" r="1.5" fill="#1a1a1a"/>
         </svg>
     </div>
-    <!-- Сердечко 4 (контурное) -->
+    <!-- Сердечко белое большое -->
     <div class="doodle doodle-7">
         <svg viewBox="0 0 100 100">
-            <path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+            <path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z" fill="none" stroke="white" stroke-width="1.5"/>
         </svg>
     </div>
-    <!-- Самолётик 4 -->
+    <!-- Самолётик белый -->
     <div class="doodle doodle-8">
         <svg viewBox="0 0 100 100">
-            <path d="M40,40 L60,40 L60,60 L40,60 Z" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
-            <path d="M50,30 L50,70" stroke="#1a1a1a" stroke-width="1"/>
+            <path d="M40,40 L60,40 L60,60 L40,60 Z" fill="none" stroke="white" stroke-width="1.2"/>
+            <path d="M50,30 L50,70" stroke="white" stroke-width="1"/>
         </svg>
     </div>
-    <!-- Сердечко 5 (заполненное) -->
+    <!-- Сердечко чёрное -->
     <div class="doodle doodle-9">
         <svg viewBox="0 0 100 100">
             <path d="M50,25 L55,40 L70,45 L55,50 L50,65 L45,50 L30,45 L45,40 Z" fill="#1a1a1a"/>
         </svg>
     </div>
-    <!-- Самолётик 5 -->
+    <!-- Самолётик чёрный -->
     <div class="doodle doodle-10">
         <svg viewBox="0 0 100 100">
             <path d="M20,40 Q35,25 55,40 T80,40" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
             <circle cx="30" cy="35" r="1.5" fill="#1a1a1a"/>
             <circle cx="65" cy="45" r="1.5" fill="#1a1a1a"/>
-        </svg>
-    </div>
-    <!-- Сердечко 6 (контурное маленькое) -->
-    <div class="doodle doodle-11">
-        <svg viewBox="0 0 100 100">
-            <path d="M50,40 Q55,50 50,60 Q45,50 50,40 Z" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
         </svg>
     </div>
 </div>
@@ -452,7 +454,7 @@
 
     <div class="block">
         <div class="guests-title">Дорогие гости!</div>
-        <p style="font-size: 18px;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
+        <p style="font-size: 18px;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное<br>торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
     </div>
     
     <!-- Общее фото -->
@@ -475,15 +477,14 @@
         <div class="gift-text">
             Мы понимаем, что дарить цветы на свадьбу — это традиция, но мы не сможем насладиться их красотой в полной мере…<br>
             У нас есть отличное решение!<br><br>
-           Нажмите на qr-код и Вы сможете внести комфортную сумму, которую хотели потратить на букет (сумма видна только вам).<br>
+            Нажмите на QR-код, и Вы сможете внести комфортную сумму, которую хотели потратить на букет (сумма видна только вам).<br>
             А когда мы вернёмся из путешествия, цветочный магазин соберёт букет и доставит его! Так цветы будут радовать нас долго!
         </div>
         
-        <!-- КЛИКАБЕЛЬНЫЙ QR-КОД (замените ссылку и имя файла) -->
+        <!-- КЛИКАБЕЛЬНЫЙ QR-КОД с пульсирующей рамкой -->
         <a href="https://bloomles.ru/product/valeria-kirill/" target="_blank" class="qr-clickable">
             <img src="70ace61e11add1cedf4d1bef60812b4e.png" alt="QR-код">
         </a>
-        <!-- Если файл называется иначе, замените qr.png на ваше имя, например qr-code.jpg -->
     </div>
 
     <div class="block">
@@ -604,21 +605,21 @@ END:VCALENDAR`;
             audioEl.pause();
             vinylIcon.classList.remove('rotate');
         } else {
-            audioEl.play().catch(e => console.log("нажмите ещё раз"));
+            audioEl.play().catch(e => console.log("Нажмите на пластинку ещё раз"));
             vinylIcon.classList.add('rotate');
         }
         isPlaying = !isPlaying;
     });
 
-    // === ДВИЖЕНИЕ РИСУНКОВ ПРИ СКРОЛЛЕ (параллакс) ===
+    // === ЭФФЕКТ ПАРАЛЛАКСА (движение рисунков при скролле) ===
     const parallaxElements = document.querySelectorAll('.doodle');
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         parallaxElements.forEach((el, index) => {
-            const speed = 0.1 + (index % 3) * 0.05;
+            const speed = 0.08 + (index % 3) * 0.04;
             const yOffset = scrolled * speed;
-            const xOffset = scrolled * (speed * 0.3);
-            el.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${scrolled * 0.05}deg)`;
+            const xOffset = scrolled * (speed * 0.2);
+            el.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${scrolled * 0.03}deg)`;
         });
     });
 </script>
