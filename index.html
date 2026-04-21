@@ -42,27 +42,20 @@
             opacity: 0.6;
             will-change: transform;
         }
-        /* Все рисунки — только сердечки и самолётики (никаких звёзд) */
         .doodle svg {
-            stroke: #1a1a1a;
+            stroke: white;
             stroke-width: 1.2;
             fill: none;
         }
         .doodle-fill {
-            fill: #1a1a1a;
+            fill: white;
             stroke: none;
         }
-        /* Позиции рисунков */
-        .doodle-1 { top: 5%; left: 3%; width: 65px; }
-        .doodle-2 { top: 12%; right: 4%; width: 55px; transform: rotate(15deg); }
-        .doodle-3 { bottom: 20%; left: 5%; width: 75px; transform: rotate(-10deg); }
-        .doodle-4 { bottom: 15%; right: 6%; width: 60px; }
-        .doodle-5 { top: 35%; left: 8%; width: 50px; transform: rotate(25deg); }
-        .doodle-6 { top: 65%; right: 7%; width: 55px; }
-        .doodle-7 { bottom: 8%; left: 12%; width: 45px; }
-        .doodle-8 { top: 80%; left: 85%; width: 42px; }
-        .doodle-9 { top: 45%; left: 90%; width: 48px; transform: rotate(20deg); }
-        .doodle-10 { bottom: 45%; right: 10%; width: 58px; }
+        /* Позиции сердечек выше и с двух сторон */
+        .doodle-1 { top: 18%; left: 5%; width: 55px; }
+        .doodle-2 { top: 22%; right: 6%; width: 60px; transform: rotate(10deg); }
+        .doodle-3 { top: 28%; left: 8%; width: 48px; transform: rotate(-5deg); }
+        .doodle-4 { top: 32%; right: 10%; width: 52px; transform: rotate(15deg); }
         
         /* Верхняя планка */
         .navbar {
@@ -105,8 +98,8 @@
             margin-bottom: 64px;
             text-align: center;
         }
-        /* Специальные шрифты */
-        .intro-tili, .guests-title, .schedule-title, .signature-text {
+        /* Все заголовки — шрифт Le Fardin */
+        .intro-tili, .guests-title, .schedule-title, .signature-text, .date-large {
             font-family: 'Le Fardin', cursive;
             font-weight: normal;
         }
@@ -125,14 +118,20 @@
             color: #2c3e4e;
             margin-bottom: 28px;
         }
-        .polaroid {
+        .date-large {
+            font-size: 44px;
+            color: #2c3e4e;
+            margin: 24px 0 12px;
+        }
+        /* Полароид с широкой нижней плашкой (как Instax) */
+        .instax-polaroid {
             background: white;
-            padding: 12px 12px 20px 12px;
+            padding: 12px 12px 30px 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
             display: inline-block;
             border-radius: 4px;
         }
-        .polaroid img {
+        .instax-polaroid img {
             width: 100%;
             height: auto;
             display: block;
@@ -169,13 +168,6 @@
             font-size: 16px;
             letter-spacing: 1px;
             color: #6b8db0;
-        }
-        .date-large {
-            font-family: 'Le Fardin', cursive;
-            font-size: 44px;
-            font-weight: normal;
-            color: #2c3e4e;
-            margin: 24px 0 12px;
         }
         .timer {
             display: flex;
@@ -265,7 +257,6 @@
             font-size: 18px;
             margin-top: 8px;
         }
-        /* Пульсирующая рамка для QR-кода */
         @keyframes pulseBorder {
             0% { box-shadow: 0 0 0 0 rgba(44, 62, 78, 0.4); }
             70% { box-shadow: 0 0 0 12px rgba(44, 62, 78, 0); }
@@ -336,75 +327,30 @@
 </head>
 <body>
 
-<!-- Контейнер с рисунками (только сердечки и самолётики) -->
+<!-- Сердечки выше и с двух сторон -->
 <div class="parallax-container" id="parallaxContainer">
-    <!-- Сердечко чёрное заполненное -->
+    <!-- Белое заполненное сердечко -->
     <div class="doodle doodle-1">
         <svg viewBox="0 0 100 100">
-            <path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z" fill="#1a1a1a"/>
+            <path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z" fill="white"/>
         </svg>
     </div>
-    <!-- Самолётик чёрный -->
+    <!-- Белое контурное сердечко -->
     <div class="doodle doodle-2">
-        <svg viewBox="0 0 100 100">
-            <path d="M20,50 Q35,30 50,50 T80,50" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-            <circle cx="30" cy="45" r="2" fill="#1a1a1a"/>
-            <circle cx="70" cy="45" r="2" fill="#1a1a1a"/>
-        </svg>
-    </div>
-    <!-- Сердечко белое контурное -->
-    <div class="doodle doodle-3">
         <svg viewBox="0 0 100 100">
             <path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z" fill="none" stroke="white" stroke-width="1.5"/>
         </svg>
     </div>
-    <!-- Самолётик белый -->
+    <!-- Белое заполненное сердечко (чуть ниже) -->
+    <div class="doodle doodle-3">
+        <svg viewBox="0 0 100 100">
+            <path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z" fill="white"/>
+        </svg>
+    </div>
+    <!-- Белое контурное сердечко -->
     <div class="doodle doodle-4">
         <svg viewBox="0 0 100 100">
-            <path d="M30,60 L50,40 L70,60" fill="none" stroke="white" stroke-width="1.5"/>
-            <circle cx="45" cy="55" r="2" fill="white"/>
-            <circle cx="55" cy="45" r="2" fill="white"/>
-        </svg>
-    </div>
-    <!-- Сердечко чёрное маленькое -->
-    <div class="doodle doodle-5">
-        <svg viewBox="0 0 100 100">
-            <path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z" fill="#1a1a1a"/>
-        </svg>
-    </div>
-    <!-- Самолётик чёрный -->
-    <div class="doodle doodle-6">
-        <svg viewBox="0 0 100 100">
-            <path d="M25,50 Q40,35 60,50 T85,50" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
-            <circle cx="35" cy="45" r="1.5" fill="#1a1a1a"/>
-            <circle cx="65" cy="55" r="1.5" fill="#1a1a1a"/>
-        </svg>
-    </div>
-    <!-- Сердечко белое большое -->
-    <div class="doodle doodle-7">
-        <svg viewBox="0 0 100 100">
             <path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z" fill="none" stroke="white" stroke-width="1.5"/>
-        </svg>
-    </div>
-    <!-- Самолётик белый -->
-    <div class="doodle doodle-8">
-        <svg viewBox="0 0 100 100">
-            <path d="M40,40 L60,40 L60,60 L40,60 Z" fill="none" stroke="white" stroke-width="1.2"/>
-            <path d="M50,30 L50,70" stroke="white" stroke-width="1"/>
-        </svg>
-    </div>
-    <!-- Сердечко чёрное -->
-    <div class="doodle doodle-9">
-        <svg viewBox="0 0 100 100">
-            <path d="M50,25 L55,40 L70,45 L55,50 L50,65 L45,50 L30,45 L45,40 Z" fill="#1a1a1a"/>
-        </svg>
-    </div>
-    <!-- Самолётик чёрный -->
-    <div class="doodle doodle-10">
-        <svg viewBox="0 0 100 100">
-            <path d="M20,40 Q35,25 55,40 T80,40" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
-            <circle cx="30" cy="35" r="1.5" fill="#1a1a1a"/>
-            <circle cx="65" cy="45" r="1.5" fill="#1a1a1a"/>
         </svg>
     </div>
 </div>
@@ -418,17 +364,17 @@
         <div class="intro-tili">Тили-тили тесто...</div>
     </div>
 
-    <!-- Детские фото -->
+    <!-- Детские фото (полароид как Instax) -->
     <div class="block">
         <div class="photo-circle-grid">
             <div class="photo-circle">
-                <div class="polaroid">
+                <div class="instax-polaroid">
                     <img src="https://placehold.co/400x400/e2c7a2/ffffff?text=Кирилл" alt="Кирилл">
                 </div>
                 <div class="photo-caption">Кирилл — жених,</div>
             </div>
             <div class="photo-circle">
-                <div class="polaroid">
+                <div class="instax-polaroid">
                     <img src="https://placehold.co/400x400/e2c7a2/ffffff?text=Лера" alt="Лера">
                 </div>
                 <div class="photo-caption">а Лера — невеста</div>
@@ -456,11 +402,11 @@
         <div class="guests-title">Дорогие гости!</div>
         <p style="font-size: 18px;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное<br>торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
     </div>
-    
-    <!-- Общее фото -->
+
+    <!-- Фото после слов "этого незабываемого дня" -->
     <div class="block">
         <div class="polaroid" style="max-width: 320px; margin: 0 auto;">
-            <img id="mainPhoto" src="we.jpg" alt="Лера и Кирилл">
+            <img id="photoAfterDay" src="9ZdunzH2RZcAqYNl_VtmQB0hSiJwN3zZz2Ev_Ph57XF5s7QF5PoD_ZOy_blHEpT2Hh-R_0TdfG_Vr6mNowNPnne8.jpg" alt="Лера и Кирилл">
         </div>
     </div>
 
@@ -469,19 +415,22 @@
             Ваше присутствие в день нашей свадьбы — самый значимый подарок для нас!<br><br>
             Ваши пожелания в конвертах будут лучшими подарками, которые помогут исполнить наши мечты.
         </div>
+
+        <!-- Фото после слов "наши мечты" -->
         <div class="square-photo">
             <div class="polaroid">
-                <img src="https://placehold.co/500x500/c8dcc0/ffffff?text=Наша+история" alt="Наша история">
+                <img src="IMG_2208-2.jpg" alt="Наша история">
             </div>
         </div>
+
         <div class="gift-text">
             Мы понимаем, что дарить цветы на свадьбу — это традиция, но мы не сможем насладиться их красотой в полной мере…<br>
             У нас есть отличное решение!<br><br>
             Нажмите на QR-код, и Вы сможете внести комфортную сумму, которую хотели потратить на букет (сумма видна только вам).<br>
             А когда мы вернёмся из путешествия, цветочный магазин соберёт букет и доставит его! Так цветы будут радовать нас долго!
         </div>
-        
-        <!-- КЛИКАБЕЛЬНЫЙ QR-КОД с пульсирующей рамкой -->
+
+        <!-- QR-код (кликабельный) -->
         <a href="https://bloomles.ru/product/valeria-kirill/" target="_blank" class="qr-clickable">
             <img src="70ace61e11add1cedf4d1bef60812b4e.png" alt="QR-код">
         </a>
@@ -530,11 +479,10 @@
     </svg>
 </div>
 <audio id="bgMusic" loop preload="auto">
-    <source src="Lana_Del_Rey_-_Chemtrails_Over_The_Country_Club_72297601.mp3" type="audio/mpeg">
+    <source src="Stephen_Sanchez_-_I_Need_You_Most_Of_All_78214235.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-    // Таймер
     function updateTimer() {
         const wedding = new Date(2026, 6, 17, 13, 30, 0);
         const now = new Date();
@@ -557,7 +505,6 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // Плавная планка
     let lastScroll = 0;
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -567,7 +514,6 @@
         lastScroll = currentScroll;
     });
 
-    // Календарь
     function downloadCalendar() {
         const start = new Date(2026, 6, 17, 13, 30);
         const end = new Date(2026, 6, 17, 19, 0);
@@ -595,7 +541,6 @@ END:VCALENDAR`;
     }
     document.getElementById('calendarNavBtn').addEventListener('click', downloadCalendar);
 
-    // Музыка
     const audioEl = document.getElementById('bgMusic');
     const vinylBtn = document.getElementById('musicBtn');
     const vinylIcon = document.getElementById('vinylIcon');
@@ -611,7 +556,6 @@ END:VCALENDAR`;
         isPlaying = !isPlaying;
     });
 
-    // === ЭФФЕКТ ПАРАЛЛАКСА (движение рисунков при скролле) ===
     const parallaxElements = document.querySelectorAll('.doodle');
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
