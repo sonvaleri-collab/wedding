@@ -25,7 +25,6 @@
             line-height: 1.45;
             overflow-x: hidden;
         }
-        /* Контейнер для параллакс-декора */
         .parallax-container {
             position: fixed;
             top: 0;
@@ -41,21 +40,18 @@
             pointer-events: none;
             will-change: transform;
         }
-        /* Сердечки Mandevilla Red (#D52032) */
+        /* Сердечки Mandevilla Red */
         .heart-red svg { fill: #D52032; stroke: #D52032; stroke-width: 1; }
         .heart-red-outline svg { fill: none; stroke: #D52032; stroke-width: 2; }
         /* Белые сердечки */
         .heart-white svg { fill: white; stroke: white; stroke-width: 1; }
         .heart-white-outline svg { fill: none; stroke: white; stroke-width: 2; }
-        /* Растения (лёгкая веточка) */
-        .branch svg { stroke: #9BB87F; stroke-width: 1.2; fill: none; }
-        .leaf { fill: #B8CFAD; }
-        /* Конфетти (очень мелкие точки) */
-        .confetti { background: #FFD1B3; width: 4px; height: 4px; border-radius: 1px; opacity: 0.5; }
-        .confetti-2 { background: #D52032; width: 3px; height: 3px; border-radius: 0; }
+        /* Мелкое конфетти */
+        .confetti { background: #FFD1B3; width: 4px; height: 4px; border-radius: 1px; opacity: 0.6; }
+        .confetti-2 { background: #D52032; width: 3px; height: 3px; }
         .confetti-3 { background: white; width: 4px; height: 4px; border-radius: 2px; }
         
-        /* Позиции декора (слева и справа, много сердечек) */
+        /* Позиции сердечек и конфетти */
         .doodle-1 { top: 10%; left: 3%; width: 45px; }
         .doodle-2 { top: 22%; right: 4%; width: 55px; transform: rotate(8deg); }
         .doodle-3 { top: 35%; left: 2%; width: 40px; }
@@ -67,6 +63,12 @@
         .doodle-9 { top: 42%; left: 9%; width: 44px; }
         .doodle-10 { top: 68%; right: 10%; width: 46px; }
         .doodle-11 { top: 92%; right: 8%; width: 40px; }
+        /* Конфетти */
+        .doodle-12 { top: 18%; left: 85%; width: 4px; height: 4px; }
+        .doodle-13 { top: 45%; right: 88%; width: 3px; height: 3px; }
+        .doodle-14 { top: 72%; left: 92%; width: 4px; height: 4px; }
+        .doodle-15 { top: 30%; right: 15%; width: 4px; height: 4px; }
+        .doodle-16 { top: 82%; left: 10%; width: 3px; height: 3px; }
         
         /* Верхняя планка */
         .navbar {
@@ -116,7 +118,7 @@
         .schedule-title { font-size: 36px; color: #2c3e4e; margin-bottom: 28px; }
         .date-large { font-size: 44px; color: #2c3e4e; margin: 24px 0 12px; }
         
-        /* Фото (все одинакового размера) */
+        /* Фото */
         .photo-container {
             display: flex;
             justify-content: center;
@@ -148,7 +150,6 @@
             font-family: 'Cormorant Infant', serif;
             font-weight: 600;
         }
-        /* Единый размер для одиночных фото (после фраз) */
         .single-photo {
             max-width: 320px;
             margin: 0 auto;
@@ -286,32 +287,29 @@
 </head>
 <body>
 
-<!-- Декор: много сердечек, минимум линий, мелкое конфетти -->
+<!-- Декор: сердечки и мелкое конфетти -->
 <div class="parallax-container" id="parallaxContainer">
-    <!-- Красные заполненные сердечки -->
+    <!-- Красные заполненные -->
     <div class="doodle heart-red doodle-1"><svg viewBox="0 0 100 100"><path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z"/></svg></div>
     <div class="doodle heart-red doodle-3"><svg viewBox="0 0 100 100"><path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z"/></svg></div>
     <div class="doodle heart-red doodle-5"><svg viewBox="0 0 100 100"><path d="M50,40 Q56,50 50,60 Q44,50 50,40 Z"/></svg></div>
-    <!-- Красные контурные сердечки -->
+    <!-- Красные контурные -->
     <div class="doodle heart-red-outline doodle-7"><svg viewBox="0 0 100 100"><path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z"/></svg></div>
     <div class="doodle heart-red-outline doodle-9"><svg viewBox="0 0 100 100"><path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z"/></svg></div>
-    <!-- Белые заполненные сердечки -->
+    <!-- Белые заполненные -->
     <div class="doodle heart-white doodle-2"><svg viewBox="0 0 100 100"><path d="M50,28 Q58,42 50,56 Q42,42 50,28 Z"/></svg></div>
     <div class="doodle heart-white doodle-4"><svg viewBox="0 0 100 100"><path d="M50,38 Q54,46 50,54 Q46,46 50,38 Z"/></svg></div>
     <div class="doodle heart-white doodle-6"><svg viewBox="0 0 100 100"><path d="M50,32 Q56,44 50,56 Q44,44 50,32 Z"/></svg></div>
-    <!-- Белые контурные сердечки -->
+    <!-- Белые контурные -->
     <div class="doodle heart-white-outline doodle-8"><svg viewBox="0 0 100 100"><path d="M50,22 Q62,8 78,28 Q88,42 50,68 Q12,42 22,28 Q38,8 50,22 Z"/></svg></div>
     <div class="doodle heart-white-outline doodle-10"><svg viewBox="0 0 100 100"><path d="M50,35 Q60,22 72,38 Q80,50 50,72 Q20,50 28,38 Q40,22 50,35 Z"/></svg></div>
-    <!-- Лёгкая веточка (почти незаметна) -->
-    <div class="doodle branch doodle-11">
-        <svg viewBox="0 0 100 100"><path d="M10,60 Q30,40 50,60 T80,50" /><circle cx="30" cy="50" r="3" fill="#B8CFAD" class="leaf"/><circle cx="50" cy="58" r="2.5" fill="#B8CFAD" class="leaf"/></svg>
-    </div>
-    <!-- Мелкое конфетти (точки, без палок) -->
-    <div class="doodle confetti doodle-12" style="top: 18%; left: 85%;"></div>
-    <div class="doodle confetti-2 doodle-13" style="top: 45%; right: 88%;"></div>
-    <div class="doodle confetti-3 doodle-14" style="top: 72%; left: 92%;"></div>
-    <div class="doodle confetti doodle-15" style="top: 30%; right: 15%;"></div>
-    <div class="doodle confetti-2 doodle-16" style="top: 82%; left: 10%;"></div>
+    <div class="doodle heart-white-outline doodle-11"><svg viewBox="0 0 100 100"><path d="M50,45 Q54,52 50,60 Q46,52 50,45 Z"/></svg></div>
+    <!-- Конфетти (мелкие точки) -->
+    <div class="doodle confetti doodle-12"></div>
+    <div class="doodle confetti-2 doodle-13"></div>
+    <div class="doodle confetti-3 doodle-14"></div>
+    <div class="doodle confetti doodle-15"></div>
+    <div class="doodle confetti-2 doodle-16"></div>
 </div>
 
 <div class="navbar" id="navbar">
@@ -335,18 +333,13 @@
         </div>
     </div>
 
+    <!-- Цитата (без фото после неё!) -->
     <div class="block">
         <div class="quote">«Кто любит людей, тот и радость их любит»</div>
         <div class="quote-author">Ф. М. Достоевский</div>
     </div>
 
-    <!-- Фото после цитаты (IMG_2094-2.jpg) — оно же будет и после "незабываемого дня" -->
-    <div class="block single-photo">
-        <div class="polaroid-card">
-            <img src="IMG_2094-2.jpg" alt="Лера и Кирилл">
-        </div>
-    </div>
-
+    <!-- Дата и таймер -->
     <div class="block">
         <div class="date-large">17 июля 2026</div>
         <div class="timer" id="timer">
@@ -358,6 +351,7 @@
         </div>
     </div>
 
+    <!-- Блок "Дорогие гости!" -->
     <div class="block">
         <div class="guests-title">Дорогие гости!</div>
         <p style="font-size: 18px;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное<br>торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
@@ -370,6 +364,7 @@
         </div>
     </div>
 
+    <!-- Блок с пожеланиями -->
     <div class="block">
         <div class="gift-text">
             Ваше присутствие в день нашей свадьбы — самый значимый подарок для нас!<br><br>
@@ -396,6 +391,7 @@
         </a>
     </div>
 
+    <!-- Расписание -->
     <div class="block">
         <div class="schedule-title">Расписание дня</div>
         <div class="schedule">
@@ -405,10 +401,11 @@
         </div>
     </div>
 
+    <!-- Дресс-код -->
     <div class="block">
         <p style="margin-bottom: 24px; font-size: 18px;">Будем благодарны, если при выборе нарядов вы придержитесь следующей палитры:</p>
         <div class="color-palette">
-            <div class="color" style="background: #FFD1B3;"></div>   <!-- Пастельно-оранжевый -->
+            <div class="color" style="background: #FFD1B3;"></div>
             <div class="color" style="background: #F2D9C2;"></div>
             <div class="color" style="background: #E8C4D0;"></div>
             <div class="color" style="background: #D6B8D6;"></div>
@@ -419,11 +416,13 @@
         <p style="margin-top: 24px; font-size: 18px;">Без строгих чёрных костюмов — создадим атмосферу цветущего сада</p>
     </div>
 
+    <!-- Карта -->
     <div class="block">
         <p style="font-size: 18px;"><strong>Как добраться</strong><br>Московская обл., Павлово-Посадский г.о., коттеджный пос. Дубрава-3, Мартовская ул., 284<br>Горьковское шоссе, 50 км</p>
         <a class="map-link" href="https://yandex.ru/maps/?text=Московская+обл.,+Павлово-Посадский+г.о.,+коттеджный+пос.+Дубрава-3,+Мартовская+ул.,+284" target="_blank">Проложить маршрут</a>
     </div>
 
+    <!-- Подпись -->
     <div class="signature">
         <div class="signature-text">мы будем рады вам!</div>
         <div class="signature-line">Ваши Кирилл и Лера</div>
@@ -443,7 +442,6 @@
 </audio>
 
 <script>
-    // Таймер
     function updateTimer() {
         const wedding = new Date(2026, 6, 17, 13, 30, 0);
         const now = new Date();
@@ -466,7 +464,6 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // Плавная планка
     let lastScroll = 0;
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -476,7 +473,6 @@
         lastScroll = currentScroll;
     });
 
-    // Календарь
     function downloadCalendar() {
         const start = new Date(2026, 6, 17, 13, 30);
         const end = new Date(2026, 6, 17, 19, 0);
@@ -504,7 +500,6 @@ END:VCALENDAR`;
     }
     document.getElementById('calendarNavBtn').addEventListener('click', downloadCalendar);
 
-    // Музыка
     const audioEl = document.getElementById('bgMusic');
     const vinylBtn = document.getElementById('musicBtn');
     let isPlaying = false;
@@ -517,7 +512,6 @@ END:VCALENDAR`;
         isPlaying = !isPlaying;
     });
 
-    // Параллакс для декора
     const parallaxElements = document.querySelectorAll('.doodle');
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
