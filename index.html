@@ -25,7 +25,7 @@
             line-height: 1.45;
             overflow-x: hidden;
         }
-        /* Контейнер для параллакс-рисунков */
+        /* Контейнер для параллакс-элементов (сердечки + шарики + линии) */
         .parallax-container {
             position: fixed;
             top: 0;
@@ -39,25 +39,24 @@
         .doodle {
             position: absolute;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.7;
             will-change: transform;
         }
-        .doodle svg {
-            stroke: white;
-            stroke-width: 1.2;
-            fill: none;
-        }
-        .doodle-fill {
-            fill: white;
-            stroke: none;
-        }
-        /* Позиции сердечек выше и с двух сторон */
-/* Сердечки слева */
-.doodle-1 { top: 15%; left: 2%; width: 55px; }
-.doodle-3 { top: 45%; left: 3%; width: 50px; }
-/* Сердечки справа */
-.doodle-2 { top: 25%; right: 2%; width: 60px; transform: rotate(10deg); }
-.doodle-4 { top: 65%; right: 3%; width: 52px; transform: rotate(-5deg); }
+        /* Стили для разных типов декора */
+        .heart-red svg { fill: #ffb3ba; stroke: #ff6b6b; stroke-width: 1.5; }
+        .heart-white svg { fill: none; stroke: white; stroke-width: 2; }
+        .balloon { filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1)); }
+        .confetti { background: #ffd966; width: 6px; height: 12px; border-radius: 2px; transform: rotate(45deg); }
+        
+        /* Позиции декора (слева и справа, по краям) */
+        .doodle-1 { top: 12%; left: 2%; width: 50px; }
+        .doodle-2 { top: 28%; right: 3%; width: 65px; transform: rotate(8deg); }
+        .doodle-3 { top: 48%; left: 1%; width: 45px; }
+        .doodle-4 { top: 72%; right: 2%; width: 55px; transform: rotate(-5deg); }
+        .doodle-5 { top: 18%; right: 12%; width: 40px; }
+        .doodle-6 { top: 62%; left: 8%; width: 38px; }
+        .doodle-7 { top: 85%; left: 15%; width: 48px; }
+        .doodle-8 { top: 35%; left: 12%; width: 42px; }
         
         /* Верхняя планка */
         .navbar {
@@ -133,14 +132,14 @@
             flex-wrap: wrap;
             margin: 30px 0;
         }
-        /* Стиль для полароида (универсальный) */
+        /* Стиль для полароида (все фото одинакового размера) */
         .polaroid-card {
             background: white;
             padding: 12px 12px 25px 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
             display: inline-block;
             border-radius: 4px;
-            width: 250px;
+            width: 260px;
             text-align: center;
         }
         .polaroid-card img {
@@ -291,6 +290,7 @@
         .qr-clickable:hover {
             transform: scale(1.02);
         }
+        /* Пластинка всегда крутится (даже на паузе) */
         .vinyl-player {
             position: fixed;
             bottom: 80px;
@@ -312,9 +312,7 @@
             height: 70px;
             pointer-events: none;
             fill: #E1DBCA;
-        }
-        .rotate {
-            animation: spin 3s linear infinite;
+            animation: spin 4s linear infinite;
         }
         @keyframes spin {
             from { transform: rotate(0deg); }
@@ -337,28 +335,48 @@
 </head>
 <body>
 
-<!-- Сердечки выше и с двух сторон -->
+<!-- Контейнер с движущимся декором (сердечки, шарики, линии) -->
 <div class="parallax-container" id="parallaxContainer">
-    <div class="doodle doodle-1">
+    <!-- Красные сердечки (заполненные) слева -->
+    <div class="doodle heart-red doodle-1">
         <svg viewBox="0 0 100 100">
-            <path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z" fill="white"/>
+            <path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z"/>
         </svg>
     </div>
-    <div class="doodle doodle-2">
+    <!-- Белые сердечки (контурные) справа -->
+    <div class="doodle heart-white doodle-2">
         <svg viewBox="0 0 100 100">
-            <path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z" fill="none" stroke="white" stroke-width="1.5"/>
+            <path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z" fill="none" stroke="white" stroke-width="2"/>
         </svg>
     </div>
-    <div class="doodle doodle-3">
+    <!-- Красное сердечко -->
+    <div class="doodle heart-red doodle-3">
         <svg viewBox="0 0 100 100">
-            <path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z" fill="white"/>
+            <path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z"/>
         </svg>
     </div>
-    <div class="doodle doodle-4">
+    <!-- Белое сердечко -->
+    <div class="doodle heart-white doodle-4">
         <svg viewBox="0 0 100 100">
-            <path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z" fill="none" stroke="white" stroke-width="1.5"/>
+            <path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z" fill="none" stroke="white" stroke-width="2"/>
         </svg>
     </div>
+    <!-- Воздушные шарики -->
+    <div class="doodle balloon doodle-5">
+        <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="40" r="25" fill="#FFB347" stroke="#E69500" stroke-width="1"/>
+            <path d="M50,65 L45,80 L55,80 Z" fill="#E69500"/>
+        </svg>
+    </div>
+    <div class="doodle balloon doodle-6">
+        <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="40" r="22" fill="#6A9FB5" stroke="#4A7A9A" stroke-width="1"/>
+            <path d="M50,62 L46,76 L54,76 Z" fill="#4A7A9A"/>
+        </svg>
+    </div>
+    <!-- Конфетти (цветные точки) -->
+    <div class="doodle confetti doodle-7"></div>
+    <div class="doodle confetti doodle-8" style="background: #FF8C94; width: 5px; height: 10px;"></div>
 </div>
 
 <div class="navbar" id="navbar">
@@ -370,7 +388,7 @@
         <div class="intro-tili">Тили-тили тесто...</div>
     </div>
 
-    <!-- Детские фото -->
+    <!-- Детские фото (оба в полароиде) -->
     <div class="block">
         <div class="photo-container">
             <div class="polaroid-card">
@@ -389,6 +407,13 @@
         <div class="quote-author">Ф. М. Достоевский</div>
     </div>
 
+    <!-- Общее фото №1 (IMG_2094-2.jpg) -->
+    <div class="block single-photo">
+        <div class="polaroid-card">
+            <img src="IMG_2094-2.jpg" alt="Лера и Кирилл">
+        </div>
+    </div>
+
     <div class="block">
         <div class="date-large">17 июля 2026</div>
         <div class="timer" id="timer">
@@ -405,7 +430,7 @@
         <p style="font-size: 18px;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное<br>торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
     </div>
 
-    <!-- Фото после слов "этого незабываемого дня" -->
+    <!-- Фото после слов "этого незабываемого дня" (длинное имя) -->
     <div class="block single-photo">
         <div class="polaroid-card">
             <img src="9ZdunzH2RZcAqYNl_VtmQB0hSiJwN3zZz2Ev_Ph57XF5s7QF5PoD_ZOy_blHEpT2Hh-R_0TdfG_Vr6mNowNPnne8.jpg" alt="Лера и Кирилл">
@@ -432,6 +457,7 @@
             А когда мы вернёмся из путешествия, цветочный магазин соберёт букет и доставит его! Так цветы будут радовать нас долго!
         </div>
 
+        <!-- QR-код (кликабельный) -->
         <a href="https://bloomles.ru/product/valeria-kirill/" target="_blank" class="qr-clickable">
             <img src="70ace61e11add1cedf4d1bef60812b4e.png" alt="QR-код">
         </a>
@@ -484,7 +510,7 @@
 </audio>
 
 <script>
-    // Таймер (без изменений)
+    // Таймер
     function updateTimer() {
         const wedding = new Date(2026, 6, 17, 13, 30, 0);
         const now = new Date();
@@ -545,31 +571,28 @@ END:VCALENDAR`;
     }
     document.getElementById('calendarNavBtn').addEventListener('click', downloadCalendar);
 
-    // Музыка
+    // Музыка (пластинка крутится всегда, но звук вкл/выкл)
     const audioEl = document.getElementById('bgMusic');
     const vinylBtn = document.getElementById('musicBtn');
-    const vinylIcon = document.getElementById('vinylIcon');
     let isPlaying = false;
     vinylBtn.addEventListener('click', () => {
         if (isPlaying) {
             audioEl.pause();
-            vinylIcon.classList.remove('rotate');
         } else {
             audioEl.play().catch(e => console.log("Нажмите на пластинку ещё раз"));
-            vinylIcon.classList.add('rotate');
         }
         isPlaying = !isPlaying;
     });
 
-    // Параллакс
+    // Параллакс для всего декора
     const parallaxElements = document.querySelectorAll('.doodle');
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         parallaxElements.forEach((el, index) => {
-            const speed = 0.08 + (index % 3) * 0.04;
+            const speed = 0.06 + (index % 3) * 0.03;
             const yOffset = scrolled * speed;
-            const xOffset = scrolled * (speed * 0.2);
-            el.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${scrolled * 0.03}deg)`;
+            const xOffset = scrolled * (speed * 0.15);
+            el.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${scrolled * 0.02}deg)`;
         });
     });
 </script>
