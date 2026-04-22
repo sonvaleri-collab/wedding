@@ -25,7 +25,7 @@
             line-height: 1.45;
             overflow-x: hidden;
         }
-        /* Контейнер для всего декора */
+        /* Контейнер для параллакс-декора */
         .parallax-container {
             position: fixed;
             top: 0;
@@ -41,32 +41,32 @@
             pointer-events: none;
             will-change: transform;
         }
-        /* Сердечки Mandevilla Red */
+        /* Сердечки Mandevilla Red (#D52032) */
         .heart-red svg { fill: #D52032; stroke: #D52032; stroke-width: 1; }
         .heart-red-outline svg { fill: none; stroke: #D52032; stroke-width: 2; }
         /* Белые сердечки */
         .heart-white svg { fill: white; stroke: white; stroke-width: 1; }
         .heart-white-outline svg { fill: none; stroke: white; stroke-width: 2; }
-        /* Растения (веточки) */
-        .branch svg { stroke: #9BB87F; stroke-width: 1.5; fill: none; }
+        /* Растения (лёгкая веточка) */
+        .branch svg { stroke: #9BB87F; stroke-width: 1.2; fill: none; }
         .leaf { fill: #B8CFAD; }
-        /* Конфетти */
-        .confetti { background: #FFD1B3; width: 5px; height: 10px; border-radius: 1px; opacity: 0.6; }
-        .confetti-2 { background: #D52032; width: 4px; height: 8px; border-radius: 2px; }
-        /* Линии */
-        .line-svg svg { stroke: #E6D8C6; stroke-width: 2; fill: none; }
+        /* Конфетти (очень мелкие точки) */
+        .confetti { background: #FFD1B3; width: 4px; height: 4px; border-radius: 1px; opacity: 0.5; }
+        .confetti-2 { background: #D52032; width: 3px; height: 3px; border-radius: 0; }
+        .confetti-3 { background: white; width: 4px; height: 4px; border-radius: 2px; }
         
-        /* Позиции декора (слева и справа) */
-        .doodle-1 { top: 12%; left: 3%; width: 45px; }
-        .doodle-2 { top: 24%; right: 4%; width: 55px; transform: rotate(10deg); }
-        .doodle-3 { top: 48%; left: 2%; width: 40px; }
-        .doodle-4 { top: 68%; right: 5%; width: 50px; transform: rotate(-5deg); }
-        .doodle-5 { top: 18%; right: 12%; width: 60px; }
-        .doodle-6 { top: 55%; left: 8%; width: 45px; transform: rotate(15deg); }
-        .doodle-7 { top: 80%; left: 15%; width: 70px; }
-        .doodle-8 { top: 35%; left: 12%; width: 35px; }
-        .doodle-9 { top: 42%; right: 15%; width: 40px; }
-        .doodle-10 { top: 88%; right: 10%; width: 55px; }
+        /* Позиции декора (слева и справа, много сердечек) */
+        .doodle-1 { top: 10%; left: 3%; width: 45px; }
+        .doodle-2 { top: 22%; right: 4%; width: 55px; transform: rotate(8deg); }
+        .doodle-3 { top: 35%; left: 2%; width: 40px; }
+        .doodle-4 { top: 48%; right: 5%; width: 50px; transform: rotate(-5deg); }
+        .doodle-5 { top: 60%; left: 4%; width: 48px; }
+        .doodle-6 { top: 75%; right: 3%; width: 52px; transform: rotate(12deg); }
+        .doodle-7 { top: 85%; left: 6%; width: 42px; }
+        .doodle-8 { top: 15%; right: 12%; width: 38px; }
+        .doodle-9 { top: 42%; left: 9%; width: 44px; }
+        .doodle-10 { top: 68%; right: 10%; width: 46px; }
+        .doodle-11 { top: 92%; right: 8%; width: 40px; }
         
         /* Верхняя планка */
         .navbar {
@@ -95,9 +95,8 @@
             cursor: pointer;
             transition: 0.2s;
         }
-        .calendar-nav-btn:hover {
-            background: #f0f5fa;
-        }
+        .calendar-nav-btn:hover { background: #f0f5fa; }
+        
         .main {
             max-width: 780px;
             margin: 0 auto;
@@ -105,10 +104,8 @@
             position: relative;
             z-index: 2;
         }
-        .block {
-            margin-bottom: 64px;
-            text-align: center;
-        }
+        .block { margin-bottom: 64px; text-align: center; }
+        
         /* Заголовки */
         .intro-tili, .guests-title, .schedule-title, .signature-text, .date-large {
             font-family: 'Le Fardin', cursive;
@@ -119,7 +116,7 @@
         .schedule-title { font-size: 36px; color: #2c3e4e; margin-bottom: 28px; }
         .date-large { font-size: 44px; color: #2c3e4e; margin: 24px 0 12px; }
         
-        /* Фото */
+        /* Фото (все одинакового размера) */
         .photo-container {
             display: flex;
             justify-content: center;
@@ -151,9 +148,14 @@
             font-family: 'Cormorant Infant', serif;
             font-weight: 600;
         }
-        .single-photo { max-width: 320px; margin: 0 auto; }
-        .single-photo .polaroid-card { width: 100%; }
-        .square-photo { max-width: 280px; margin: 32px auto; }
+        /* Единый размер для одиночных фото (после фраз) */
+        .single-photo {
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        .single-photo .polaroid-card {
+            width: 100%;
+        }
         
         .quote {
             font-size: 26px;
@@ -284,40 +286,32 @@
 </head>
 <body>
 
-<!-- Декор: сердечки, растения, линии, конфетти -->
+<!-- Декор: много сердечек, минимум линий, мелкое конфетти -->
 <div class="parallax-container" id="parallaxContainer">
-    <!-- Красные сердечки Mandevilla Red (заполненные) -->
-    <div class="doodle heart-red doodle-1">
-        <svg viewBox="0 0 100 100"><path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z"/></svg>
+    <!-- Красные заполненные сердечки -->
+    <div class="doodle heart-red doodle-1"><svg viewBox="0 0 100 100"><path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z"/></svg></div>
+    <div class="doodle heart-red doodle-3"><svg viewBox="0 0 100 100"><path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z"/></svg></div>
+    <div class="doodle heart-red doodle-5"><svg viewBox="0 0 100 100"><path d="M50,40 Q56,50 50,60 Q44,50 50,40 Z"/></svg></div>
+    <!-- Красные контурные сердечки -->
+    <div class="doodle heart-red-outline doodle-7"><svg viewBox="0 0 100 100"><path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z"/></svg></div>
+    <div class="doodle heart-red-outline doodle-9"><svg viewBox="0 0 100 100"><path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z"/></svg></div>
+    <!-- Белые заполненные сердечки -->
+    <div class="doodle heart-white doodle-2"><svg viewBox="0 0 100 100"><path d="M50,28 Q58,42 50,56 Q42,42 50,28 Z"/></svg></div>
+    <div class="doodle heart-white doodle-4"><svg viewBox="0 0 100 100"><path d="M50,38 Q54,46 50,54 Q46,46 50,38 Z"/></svg></div>
+    <div class="doodle heart-white doodle-6"><svg viewBox="0 0 100 100"><path d="M50,32 Q56,44 50,56 Q44,44 50,32 Z"/></svg></div>
+    <!-- Белые контурные сердечки -->
+    <div class="doodle heart-white-outline doodle-8"><svg viewBox="0 0 100 100"><path d="M50,22 Q62,8 78,28 Q88,42 50,68 Q12,42 22,28 Q38,8 50,22 Z"/></svg></div>
+    <div class="doodle heart-white-outline doodle-10"><svg viewBox="0 0 100 100"><path d="M50,35 Q60,22 72,38 Q80,50 50,72 Q20,50 28,38 Q40,22 50,35 Z"/></svg></div>
+    <!-- Лёгкая веточка (почти незаметна) -->
+    <div class="doodle branch doodle-11">
+        <svg viewBox="0 0 100 100"><path d="M10,60 Q30,40 50,60 T80,50" /><circle cx="30" cy="50" r="3" fill="#B8CFAD" class="leaf"/><circle cx="50" cy="58" r="2.5" fill="#B8CFAD" class="leaf"/></svg>
     </div>
-    <!-- Белые сердечки (заполненные) -->
-    <div class="doodle heart-white doodle-2">
-        <svg viewBox="0 0 100 100"><path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z"/></svg>
-    </div>
-    <!-- Красное контурное сердечко -->
-    <div class="doodle heart-red-outline doodle-3">
-        <svg viewBox="0 0 100 100"><path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z"/></svg>
-    </div>
-    <!-- Белое контурное сердечко -->
-    <div class="doodle heart-white-outline doodle-4">
-        <svg viewBox="0 0 100 100"><path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z"/></svg>
-    </div>
-    <!-- Веточка с листьями (растение) -->
-    <div class="doodle branch doodle-5">
-        <svg viewBox="0 0 100 100"><path d="M20,50 Q40,30 60,50 T90,40" /><path d="M35,40 L40,32 M50,45 L55,38 M70,48 L75,42" stroke="#9BB87F" fill="none" stroke-width="1.5"/><circle cx="40" cy="32" r="4" fill="#B8CFAD" class="leaf"/><circle cx="55" cy="38" r="3.5" fill="#B8CFAD" class="leaf"/><circle cx="75" cy="42" r="3" fill="#B8CFAD" class="leaf"/></svg>
-    </div>
-    <!-- Волнистая линия (золотистая) -->
-    <div class="doodle line-svg doodle-6">
-        <svg viewBox="0 0 100 100"><path d="M10,50 Q30,30 50,50 T90,50" stroke="#E6D8C6" stroke-width="2" fill="none"/></svg>
-    </div>
-    <!-- Ещё красное сердечко -->
-    <div class="doodle heart-red doodle-7">
-        <svg viewBox="0 0 100 100"><path d="M50,40 Q56,50 50,60 Q44,50 50,40 Z"/></svg>
-    </div>
-    <!-- Конфетти -->
-    <div class="doodle confetti doodle-8"></div>
-    <div class="doodle confetti-2 doodle-9"></div>
-    <div class="doodle confetti doodle-10"></div>
+    <!-- Мелкое конфетти (точки, без палок) -->
+    <div class="doodle confetti doodle-12" style="top: 18%; left: 85%;"></div>
+    <div class="doodle confetti-2 doodle-13" style="top: 45%; right: 88%;"></div>
+    <div class="doodle confetti-3 doodle-14" style="top: 72%; left: 92%;"></div>
+    <div class="doodle confetti doodle-15" style="top: 30%; right: 15%;"></div>
+    <div class="doodle confetti-2 doodle-16" style="top: 82%; left: 10%;"></div>
 </div>
 
 <div class="navbar" id="navbar">
@@ -346,7 +340,7 @@
         <div class="quote-author">Ф. М. Достоевский</div>
     </div>
 
-    <!-- Фото после цитаты (IMG_2094-2.jpg) -->
+    <!-- Фото после цитаты (IMG_2094-2.jpg) — оно же будет и после "незабываемого дня" -->
     <div class="block single-photo">
         <div class="polaroid-card">
             <img src="IMG_2094-2.jpg" alt="Лера и Кирилл">
@@ -369,7 +363,7 @@
         <p style="font-size: 18px;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное<br>торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
     </div>
 
-    <!-- Фото после слов "этого незабываемого дня" (IMG_2094-2.jpg) — дублируем, так как вы просили оставить именно его -->
+    <!-- Фото после слов "незабываемого дня" (IMG_2094-2.jpg) -->
     <div class="block single-photo">
         <div class="polaroid-card">
             <img src="IMG_2094-2.jpg" alt="Лера и Кирилл">
@@ -383,7 +377,7 @@
         </div>
 
         <!-- Фото после слов "наши мечты" (IMG_2208-2.jpg) -->
-        <div class="square-photo">
+        <div class="single-photo">
             <div class="polaroid-card">
                 <img src="IMG_2208-2.jpg" alt="Наша история">
             </div>
@@ -523,15 +517,15 @@ END:VCALENDAR`;
         isPlaying = !isPlaying;
     });
 
-    // Параллакс для всего декора
+    // Параллакс для декора
     const parallaxElements = document.querySelectorAll('.doodle');
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         parallaxElements.forEach((el, index) => {
-            const speed = 0.05 + (index % 3) * 0.03;
+            const speed = 0.04 + (index % 4) * 0.02;
             const yOffset = scrolled * speed;
             const xOffset = scrolled * (speed * 0.1);
-            el.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${scrolled * 0.02}deg)`;
+            el.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${scrolled * 0.015}deg)`;
         });
     });
 </script>
