@@ -25,7 +25,7 @@
             line-height: 1.45;
             overflow-x: hidden;
         }
-        /* Контейнер для параллакс-элементов (сердечки + шарики + линии) */
+        /* Контейнер для всего декора */
         .parallax-container {
             position: fixed;
             top: 0;
@@ -39,24 +39,34 @@
         .doodle {
             position: absolute;
             pointer-events: none;
-            opacity: 0.7;
             will-change: transform;
         }
-        /* Стили для разных типов декора */
-        .heart-red svg { fill: #ffb3ba; stroke: #ff6b6b; stroke-width: 1.5; }
-        .heart-white svg { fill: none; stroke: white; stroke-width: 2; }
-        .balloon { filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1)); }
-        .confetti { background: #ffd966; width: 6px; height: 12px; border-radius: 2px; transform: rotate(45deg); }
+        /* Сердечки Mandevilla Red */
+        .heart-red svg { fill: #D52032; stroke: #D52032; stroke-width: 1; }
+        .heart-red-outline svg { fill: none; stroke: #D52032; stroke-width: 2; }
+        /* Белые сердечки */
+        .heart-white svg { fill: white; stroke: white; stroke-width: 1; }
+        .heart-white-outline svg { fill: none; stroke: white; stroke-width: 2; }
+        /* Растения (веточки) */
+        .branch svg { stroke: #9BB87F; stroke-width: 1.5; fill: none; }
+        .leaf { fill: #B8CFAD; }
+        /* Конфетти */
+        .confetti { background: #FFD1B3; width: 5px; height: 10px; border-radius: 1px; opacity: 0.6; }
+        .confetti-2 { background: #D52032; width: 4px; height: 8px; border-radius: 2px; }
+        /* Линии */
+        .line-svg svg { stroke: #E6D8C6; stroke-width: 2; fill: none; }
         
-        /* Позиции декора (слева и справа, по краям) */
-        .doodle-1 { top: 12%; left: 2%; width: 50px; }
-        .doodle-2 { top: 28%; right: 3%; width: 65px; transform: rotate(8deg); }
-        .doodle-3 { top: 48%; left: 1%; width: 45px; }
-        .doodle-4 { top: 72%; right: 2%; width: 55px; transform: rotate(-5deg); }
-        .doodle-5 { top: 18%; right: 12%; width: 40px; }
-        .doodle-6 { top: 62%; left: 8%; width: 38px; }
-        .doodle-7 { top: 85%; left: 15%; width: 48px; }
-        .doodle-8 { top: 35%; left: 12%; width: 42px; }
+        /* Позиции декора (слева и справа) */
+        .doodle-1 { top: 12%; left: 3%; width: 45px; }
+        .doodle-2 { top: 24%; right: 4%; width: 55px; transform: rotate(10deg); }
+        .doodle-3 { top: 48%; left: 2%; width: 40px; }
+        .doodle-4 { top: 68%; right: 5%; width: 50px; transform: rotate(-5deg); }
+        .doodle-5 { top: 18%; right: 12%; width: 60px; }
+        .doodle-6 { top: 55%; left: 8%; width: 45px; transform: rotate(15deg); }
+        .doodle-7 { top: 80%; left: 15%; width: 70px; }
+        .doodle-8 { top: 35%; left: 12%; width: 35px; }
+        .doodle-9 { top: 42%; right: 15%; width: 40px; }
+        .doodle-10 { top: 88%; right: 10%; width: 55px; }
         
         /* Верхняя планка */
         .navbar {
@@ -99,32 +109,17 @@
             margin-bottom: 64px;
             text-align: center;
         }
-        /* Все заголовки — шрифт Le Fardin */
+        /* Заголовки */
         .intro-tili, .guests-title, .schedule-title, .signature-text, .date-large {
             font-family: 'Le Fardin', cursive;
             font-weight: normal;
         }
-        .intro-tili {
-            font-size: 38px;
-            color: #2c3e4e;
-            margin-bottom: 36px;
-        }
-        .guests-title {
-            font-size: 30px;
-            margin-bottom: 16px;
-            color: #2c3e4e;
-        }
-        .schedule-title {
-            font-size: 36px;
-            color: #2c3e4e;
-            margin-bottom: 28px;
-        }
-        .date-large {
-            font-size: 44px;
-            color: #2c3e4e;
-            margin: 24px 0 12px;
-        }
-        /* Универсальный контейнер для фото */
+        .intro-tili { font-size: 38px; color: #2c3e4e; margin-bottom: 36px; }
+        .guests-title { font-size: 30px; margin-bottom: 16px; color: #2c3e4e; }
+        .schedule-title { font-size: 36px; color: #2c3e4e; margin-bottom: 28px; }
+        .date-large { font-size: 44px; color: #2c3e4e; margin: 24px 0 12px; }
+        
+        /* Фото */
         .photo-container {
             display: flex;
             justify-content: center;
@@ -132,7 +127,6 @@
             flex-wrap: wrap;
             margin: 30px 0;
         }
-        /* Стиль для полароида (все фото одинакового размера) */
         .polaroid-card {
             background: white;
             padding: 12px 12px 25px 12px;
@@ -157,14 +151,10 @@
             font-family: 'Cormorant Infant', serif;
             font-weight: 600;
         }
-        /* Для одиночного фото */
-        .single-photo {
-            max-width: 320px;
-            margin: 0 auto;
-        }
-        .single-photo .polaroid-card {
-            width: 100%;
-        }
+        .single-photo { max-width: 320px; margin: 0 auto; }
+        .single-photo .polaroid-card { width: 100%; }
+        .square-photo { max-width: 280px; margin: 32px auto; }
+        
         .quote {
             font-size: 26px;
             font-style: italic;
@@ -173,37 +163,16 @@
             margin: 48px auto 20px;
             line-height: 1.3;
         }
-        .quote-author {
-            font-size: 16px;
-            letter-spacing: 1px;
-            color: #6b8db0;
-        }
+        .quote-author { font-size: 16px; letter-spacing: 1px; color: #6b8db0; }
         .timer {
             display: flex;
             gap: 28px;
             flex-wrap: wrap;
             justify-content: center;
         }
-        .timer-item {
-            min-width: 70px;
-            text-align: center;
-        }
-        .timer-number {
-            font-size: 56px;
-            font-weight: 600;
-            color: #2c3e4e;
-            line-height: 1;
-        }
-        .timer-label {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #6b8db0;
-        }
-        .square-photo {
-            max-width: 280px;
-            margin: 32px auto;
-        }
+        .timer-item { min-width: 70px; text-align: center; }
+        .timer-number { font-size: 56px; font-weight: 600; color: #2c3e4e; line-height: 1; }
+        .timer-label { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #6b8db0; }
         .gift-text {
             max-width: 90%;
             margin: 0 auto;
@@ -233,12 +202,7 @@
             flex-wrap: wrap;
             margin: 28px 0 20px;
         }
-        .color {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
+        .color { width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
         .map-link {
             display: inline-flex;
             align-items: center;
@@ -257,15 +221,9 @@
             padding-top: 32px;
             border-top: 1px solid #B0C4DE;
         }
-        .signature-text {
-            font-size: 24px;
-            color: #2c3e4e;
-        }
-        .signature-line {
-            font-family: 'Cormorant Infant', serif;
-            font-size: 18px;
-            margin-top: 8px;
-        }
+        .signature-text { font-size: 24px; color: #2c3e4e; }
+        .signature-line { font-family: 'Cormorant Infant', serif; font-size: 18px; margin-top: 8px; }
+        
         @keyframes pulseBorder {
             0% { box-shadow: 0 0 0 0 rgba(44, 62, 78, 0.4); }
             70% { box-shadow: 0 0 0 12px rgba(44, 62, 78, 0); }
@@ -281,16 +239,10 @@
             border-radius: 16px;
             display: block;
         }
-        .qr-clickable img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 16px;
-        }
-        .qr-clickable:hover {
-            transform: scale(1.02);
-        }
-        /* Пластинка всегда крутится (даже на паузе) */
+        .qr-clickable img { width: 100%; height: 100%; object-fit: contain; border-radius: 16px; }
+        .qr-clickable:hover { transform: scale(1.02); }
+        
+        /* Пластинка всегда крутится */
         .vinyl-player {
             position: fixed;
             bottom: 80px;
@@ -314,10 +266,7 @@
             fill: #E1DBCA;
             animation: spin 4s linear infinite;
         }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 0 0 rgba(44, 62, 78, 0.4); }
             70% { box-shadow: 0 0 0 14px rgba(44, 62, 78, 0); }
@@ -335,48 +284,40 @@
 </head>
 <body>
 
-<!-- Контейнер с движущимся декором (сердечки, шарики, линии) -->
+<!-- Декор: сердечки, растения, линии, конфетти -->
 <div class="parallax-container" id="parallaxContainer">
-    <!-- Красные сердечки (заполненные) слева -->
+    <!-- Красные сердечки Mandevilla Red (заполненные) -->
     <div class="doodle heart-red doodle-1">
-        <svg viewBox="0 0 100 100">
-            <path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z"/>
-        </svg>
+        <svg viewBox="0 0 100 100"><path d="M50,30 Q60,45 50,60 Q40,45 50,30 Z"/></svg>
     </div>
-    <!-- Белые сердечки (контурные) справа -->
+    <!-- Белые сердечки (заполненные) -->
     <div class="doodle heart-white doodle-2">
-        <svg viewBox="0 0 100 100">
-            <path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z" fill="none" stroke="white" stroke-width="2"/>
-        </svg>
+        <svg viewBox="0 0 100 100"><path d="M50,25 Q65,10 80,30 Q90,45 50,70 Q10,45 20,30 Q35,10 50,25 Z"/></svg>
     </div>
-    <!-- Красное сердечко -->
-    <div class="doodle heart-red doodle-3">
-        <svg viewBox="0 0 100 100">
-            <path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z"/>
-        </svg>
+    <!-- Красное контурное сердечко -->
+    <div class="doodle heart-red-outline doodle-3">
+        <svg viewBox="0 0 100 100"><path d="M50,35 Q55,45 50,55 Q45,45 50,35 Z"/></svg>
     </div>
-    <!-- Белое сердечко -->
-    <div class="doodle heart-white doodle-4">
-        <svg viewBox="0 0 100 100">
-            <path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z" fill="none" stroke="white" stroke-width="2"/>
-        </svg>
+    <!-- Белое контурное сердечко -->
+    <div class="doodle heart-white-outline doodle-4">
+        <svg viewBox="0 0 100 100"><path d="M50,30 Q65,15 80,30 Q90,45 50,75 Q10,45 20,30 Q35,15 50,30 Z"/></svg>
     </div>
-    <!-- Воздушные шарики -->
-    <div class="doodle balloon doodle-5">
-        <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="40" r="25" fill="#FFB347" stroke="#E69500" stroke-width="1"/>
-            <path d="M50,65 L45,80 L55,80 Z" fill="#E69500"/>
-        </svg>
+    <!-- Веточка с листьями (растение) -->
+    <div class="doodle branch doodle-5">
+        <svg viewBox="0 0 100 100"><path d="M20,50 Q40,30 60,50 T90,40" /><path d="M35,40 L40,32 M50,45 L55,38 M70,48 L75,42" stroke="#9BB87F" fill="none" stroke-width="1.5"/><circle cx="40" cy="32" r="4" fill="#B8CFAD" class="leaf"/><circle cx="55" cy="38" r="3.5" fill="#B8CFAD" class="leaf"/><circle cx="75" cy="42" r="3" fill="#B8CFAD" class="leaf"/></svg>
     </div>
-    <div class="doodle balloon doodle-6">
-        <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="40" r="22" fill="#6A9FB5" stroke="#4A7A9A" stroke-width="1"/>
-            <path d="M50,62 L46,76 L54,76 Z" fill="#4A7A9A"/>
-        </svg>
+    <!-- Волнистая линия (золотистая) -->
+    <div class="doodle line-svg doodle-6">
+        <svg viewBox="0 0 100 100"><path d="M10,50 Q30,30 50,50 T90,50" stroke="#E6D8C6" stroke-width="2" fill="none"/></svg>
     </div>
-    <!-- Конфетти (цветные точки) -->
-    <div class="doodle confetti doodle-7"></div>
-    <div class="doodle confetti doodle-8" style="background: #FF8C94; width: 5px; height: 10px;"></div>
+    <!-- Ещё красное сердечко -->
+    <div class="doodle heart-red doodle-7">
+        <svg viewBox="0 0 100 100"><path d="M50,40 Q56,50 50,60 Q44,50 50,40 Z"/></svg>
+    </div>
+    <!-- Конфетти -->
+    <div class="doodle confetti doodle-8"></div>
+    <div class="doodle confetti-2 doodle-9"></div>
+    <div class="doodle confetti doodle-10"></div>
 </div>
 
 <div class="navbar" id="navbar">
@@ -384,11 +325,9 @@
 </div>
 
 <div class="main">
-    <div class="block">
-        <div class="intro-tili">Тили-тили тесто...</div>
-    </div>
+    <div class="block"><div class="intro-tili">Тили-тили тесто...</div></div>
 
-    <!-- Детские фото (оба в полароиде) -->
+    <!-- Детские фото -->
     <div class="block">
         <div class="photo-container">
             <div class="polaroid-card">
@@ -407,7 +346,7 @@
         <div class="quote-author">Ф. М. Достоевский</div>
     </div>
 
-    <!-- Общее фото №1 (IMG_2094-2.jpg) -->
+    <!-- Фото после цитаты (IMG_2094-2.jpg) -->
     <div class="block single-photo">
         <div class="polaroid-card">
             <img src="IMG_2094-2.jpg" alt="Лера и Кирилл">
@@ -430,10 +369,10 @@
         <p style="font-size: 18px;">Мы рады сообщить вам, что 17 июля 2026 состоится самое главное<br>торжество в нашей жизни — день нашей свадьбы!<br>Приглашаем вас разделить с нами радость этого незабываемого дня.</p>
     </div>
 
-    <!-- Фото после слов "этого незабываемого дня" (длинное имя) -->
+    <!-- Фото после слов "этого незабываемого дня" (IMG_2094-2.jpg) — дублируем, так как вы просили оставить именно его -->
     <div class="block single-photo">
         <div class="polaroid-card">
-            <img src="9ZdunzH2RZcAqYNl_VtmQB0hSiJwN3zZz2Ev_Ph57XF5s7QF5PoD_ZOy_blHEpT2Hh-R_0TdfG_Vr6mNowNPnne8.jpg" alt="Лера и Кирилл">
+            <img src="IMG_2094-2.jpg" alt="Лера и Кирилл">
         </div>
     </div>
 
@@ -443,7 +382,7 @@
             Ваши пожелания в конвертах будут лучшими подарками, которые помогут исполнить наши мечты.
         </div>
 
-        <!-- Фото после слов "наши мечты" -->
+        <!-- Фото после слов "наши мечты" (IMG_2208-2.jpg) -->
         <div class="square-photo">
             <div class="polaroid-card">
                 <img src="IMG_2208-2.jpg" alt="Наша история">
@@ -457,7 +396,7 @@
             А когда мы вернёмся из путешествия, цветочный магазин соберёт букет и доставит его! Так цветы будут радовать нас долго!
         </div>
 
-        <!-- QR-код (кликабельный) -->
+        <!-- QR-код -->
         <a href="https://bloomles.ru/product/valeria-kirill/" target="_blank" class="qr-clickable">
             <img src="70ace61e11add1cedf4d1bef60812b4e.png" alt="QR-код">
         </a>
@@ -475,7 +414,7 @@
     <div class="block">
         <p style="margin-bottom: 24px; font-size: 18px;">Будем благодарны, если при выборе нарядов вы придержитесь следующей палитры:</p>
         <div class="color-palette">
-            <div class="color" style="background: #F2E1B3;"></div>
+            <div class="color" style="background: #FFD1B3;"></div>   <!-- Пастельно-оранжевый -->
             <div class="color" style="background: #F2D9C2;"></div>
             <div class="color" style="background: #E8C4D0;"></div>
             <div class="color" style="background: #D6B8D6;"></div>
@@ -571,7 +510,7 @@ END:VCALENDAR`;
     }
     document.getElementById('calendarNavBtn').addEventListener('click', downloadCalendar);
 
-    // Музыка (пластинка крутится всегда, но звук вкл/выкл)
+    // Музыка
     const audioEl = document.getElementById('bgMusic');
     const vinylBtn = document.getElementById('musicBtn');
     let isPlaying = false;
@@ -589,9 +528,9 @@ END:VCALENDAR`;
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         parallaxElements.forEach((el, index) => {
-            const speed = 0.06 + (index % 3) * 0.03;
+            const speed = 0.05 + (index % 3) * 0.03;
             const yOffset = scrolled * speed;
-            const xOffset = scrolled * (speed * 0.15);
+            const xOffset = scrolled * (speed * 0.1);
             el.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${scrolled * 0.02}deg)`;
         });
     });
